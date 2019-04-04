@@ -1,11 +1,14 @@
 package com.mine;
 
 import com.mine.mapper.CeShiMapper;
+import com.mine.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by jiangqd on 2019/1/12.
@@ -21,6 +24,7 @@ public class UserTest extends BaseJunit4Test {
         log.info("你好啊");
         List<String> list = ceShiMapper.getUsername();
         System.out.println(list.toString());
+        ceShiMapper.addUser("123456789-123456789-123456789");
     }
 
     @Test
@@ -39,6 +43,17 @@ public class UserTest extends BaseJunit4Test {
         Integer b = 127;
         System.out.println(a == b);
         System.out.println(i2 == i3);
+    }
+
+    @Test
+    public void test3() {
+
+        User user = new User();
+        String username = user.getName();
+        int i = user.getAge();
+        if ("dd".equals(username)) {
+            System.out.println(5544);
+        }
     }
 
 }

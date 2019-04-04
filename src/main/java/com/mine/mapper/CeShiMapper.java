@@ -1,6 +1,8 @@
 package com.mine.mapper;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -15,5 +17,8 @@ public interface CeShiMapper {
 
     @Select("select username from user")
     List<String> getUsername ();
+
+    @Insert("insert into user (username) value (#{username})")
+    void addUser(@Param("username")String username);
 
 }
