@@ -53,6 +53,7 @@ public class UserTest extends BaseJunit4Test {
         int i = user.getAge();
         if ("dd".equals(username)) {
             System.out.println(5544);
+            System.out.println(33);
         }
     }
 
