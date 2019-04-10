@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
@@ -47,14 +48,11 @@ public class UserTest extends BaseJunit4Test {
 
     @Test
     public void test3() {
-
-        User user = new User();
-        String username = user.getName();
-        int i = user.getAge();
-        if ("dd".equals(username)) {
-            System.out.println(5544);
-            System.out.println(33);
-        }
+        String s = "dsf fdd    ";
+        char[] arr = s.toCharArray();
+        System.out.println(arr.length);
+        String[] arr1 = s.split(" ");
+        System.out.println(arr1.length);
     }
 
 }
