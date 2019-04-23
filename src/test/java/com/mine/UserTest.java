@@ -1,5 +1,6 @@
 package com.mine;
 
+import com.google.gson.Gson;
 import com.mine.mapper.CeShiMapper;
 import com.mine.model.User;
 import lombok.extern.slf4j.Slf4j;
@@ -48,11 +49,11 @@ public class UserTest extends BaseJunit4Test {
 
     @Test
     public void test3() {
-        String s = "dsf fdd    ";
-        char[] arr = s.toCharArray();
-        System.out.println(arr.length);
-        String[] arr1 = s.split(" ");
-        System.out.println(arr1.length);
+        Map<String, String> map = new HashMap<>();
+        map.put("dd", "ji");
+        map.put("dd54", "545");
+        System.out.println(map.toString());
+        System.out.println(new Gson().toJson(map));
     }
 
 }
