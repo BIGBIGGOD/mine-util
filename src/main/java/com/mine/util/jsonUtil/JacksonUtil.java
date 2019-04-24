@@ -21,7 +21,7 @@ public class JacksonUtil {
     public static void main(String[] args) throws IOException {
         Map<String, String> map = new HashMap<>();
         map.put("dd", "ji");
-        map.put("dd54", "545"); 
+        map.put("dd54", "545");
         String str = map.toString();
         String json = new Gson().toJson(map);
         HashMap<String, Object> jsonMap = JacksonUtil.jsonToBean(json, HashMap.class);
