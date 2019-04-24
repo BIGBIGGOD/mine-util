@@ -1,5 +1,6 @@
 package com.mine;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.mine.mapper.CeShiMapper;
 import com.mine.model.User;
@@ -7,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
@@ -48,12 +50,15 @@ public class UserTest extends BaseJunit4Test {
     }
 
     @Test
-    public void test3() {
+    public void test3() throws IOException {
         Map<String, String> map = new HashMap<>();
         map.put("dd", "ji");
         map.put("dd54", "545");
-        System.out.println(map.toString());
-        System.out.println(new Gson().toJson(map));
+        String str = map.toString();
+        String json = new Gson().toJson(map);
+        ObjectMapper mapper = new ObjectMapper();
+        HashMap<String, Object> jsonMap = mapper.readValue(json, HashMap.class);
+
     }
 
 }
