@@ -1,5 +1,6 @@
 package com.mine;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.mine.mapper.CeShiMapper;
@@ -51,14 +52,15 @@ public class UserTest extends BaseJunit4Test {
 
     @Test
     public void test3() throws IOException {
-        Map<String, String> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map1 = new HashMap<>();
         map.put("dd", "ji");
-        map.put("dd54", "545");
+        map.put("dd54", 545);
+        map.put("map1", new Gson().toJson(map1));
         String str = map.toString();
         String json = new Gson().toJson(map);
         ObjectMapper mapper = new ObjectMapper();
         HashMap<String, Object> jsonMap = mapper.readValue(json, HashMap.class);
-
     }
 
 }
