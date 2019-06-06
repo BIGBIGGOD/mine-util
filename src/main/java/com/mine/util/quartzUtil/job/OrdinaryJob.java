@@ -13,6 +13,7 @@ import java.util.Date;
  */
 public class OrdinaryJob implements Job {
 
+    @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
 
         JobDetail detail = context.getJobDetail();

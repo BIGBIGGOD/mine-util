@@ -83,8 +83,7 @@ public class JwtUtil {
     /**
      * 从令牌中获取数据详情
      *
-     * @param token 令牌
-     * @return 用户名
+     * @param claims
      */
     public static void getDataDetailFromToken(Claims claims) {
         try {
@@ -110,12 +109,13 @@ public class JwtUtil {
 
     /**
      * 获取请求头中的token
+     *
      * @param request
      * @return
      */
     public static String getToken(HttpServletRequest request) {
         String token = request.getHeader("token");
-        if(StringUtils.isBlank(token)) {
+        if (StringUtils.isBlank(token)) {
             token = null;
         }
         return token;
@@ -139,6 +139,7 @@ public class JwtUtil {
 
     /**
      * 刷新令牌
+     *
      * @param token
      * @return
      */

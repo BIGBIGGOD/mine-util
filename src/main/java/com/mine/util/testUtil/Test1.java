@@ -4,9 +4,9 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.Data;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.lang.reflect.Array;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by jiangqd on 2019/3/16.
@@ -24,6 +24,19 @@ public class Test1 {
 //        String repeatTempleteText = "@[受邀者昵称]，你已经参与过该活动，不可重复助力快来生成海报，";
 //        repeatTempleteText =repeatTempleteText.replace("[受邀者昵称]", "悟空");
 //        System.out.println(repeatTempleteText);
+        List<String> list= new ArrayList<>();
+        List<String> list2= new ArrayList<>();
+        list.add("1");
+        list2.add("1");
+        list2.add("1");
+        list.add("2");
+        list.add("3");
+        list.add("4");
+//        list.addAll(list2);
+        list.stream().sorted( (s1, s2) -> Integer.valueOf(s2) - Integer.valueOf(s1)).forEach(System.out::println);
+        list2 =list.stream().filter(str -> Integer.valueOf(str) > 2).collect(Collectors.toList());
+        System.out.println(list);
+        System.out.println(list2);
     }
 
 }
