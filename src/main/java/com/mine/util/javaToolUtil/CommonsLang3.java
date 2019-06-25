@@ -166,6 +166,18 @@ public class CommonsLang3 {
 
     }
 
+    /**
+     * @Description 数值类型转化
+     */
+    public static void testNumValueTypeChange() {
+        String str1 = "111";
+        //String转数值类型
+        Integer res1 = Integer.valueOf(str1);
+        Integer res2 = Integer.parseInt(str1);
+        //int转long
+        Long res3 = res1.longValue();
+    }
+
     public static void main(String[] args) {
         CommonsLang3.testStringUtils();
         CommonsLang3.testRandom();
