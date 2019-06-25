@@ -1,10 +1,13 @@
 package com.mine.util.javaToolUtil;
 
+import com.mine.util.dateUtil.DateUtil;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.*;
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.apache.commons.lang3.time.FastDateFormat;
 
+import java.text.ParseException;
 import java.util.Date;
 
 /**
@@ -178,11 +181,30 @@ public class CommonsLang3 {
         Long res3 = res1.longValue();
     }
 
-    public static void main(String[] args) {
-        CommonsLang3.testStringUtils();
-        CommonsLang3.testRandom();
-        CommonsLang3.testArrayUtils();
-        CommonsLang3.testDateFormatUtils();
+    /**
+     * @Description 各种判null返回空字符串
+     */
+    public static void testJudgeValue() throws ParseException {
+        String str = null;
+        Integer num = null;
+        Date date = new Date();
+        Boolean res = null;
+        String str1 = StringUtils.trimToEmpty(str);
+        String str2 = num == null ? "" : num.toString();
+        String str3 = date == null ? "" : DateUtil.getDateStr(date);
+        String str4 = res == null ? "" : res.toString();
+        str = str1;
+        num = str2.equals("") ? null : Integer.parseInt(str2);
+        date = str3.equals("") ? null : DateUtil.getDate(str3);
+        res = str4.equals("") ? null : Boolean.getBoolean(str4);
+    }
+
+    public static void main(String[] args) throws ParseException {
+//        CommonsLang3.testStringUtils();
+//        CommonsLang3.testRandom();
+//        CommonsLang3.testArrayUtils();
+//        CommonsLang3.testDateFormatUtils();
+        CommonsLang3.testJudgeValue();  
     }
 
 }
