@@ -3,6 +3,7 @@ package com.mine.util.testUtil;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.Data;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.lang.reflect.Array;
 import java.util.*;
@@ -24,6 +25,8 @@ public class Test1 {
 //        String repeatTempleteText = "@[受邀者昵称]，你已经参与过该活动，不可重复助力快来生成海报，";
 //        repeatTempleteText =repeatTempleteText.replace("[受邀者昵称]", "悟空");
 //        System.out.println(repeatTempleteText);
+        ClassPathXmlApplicationContext c = new ClassPathXmlApplicationContext("");
+        c.getBean("");
     }
 
 }
