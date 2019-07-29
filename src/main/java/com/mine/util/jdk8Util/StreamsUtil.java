@@ -26,7 +26,7 @@ public class StreamsUtil {
         stringCollection.add("ddd1");
 
 //        method1(stringCollection);
-        method4(stringCollection);
+        method1(stringCollection);
     }
 
     /**
@@ -40,17 +40,15 @@ public class StreamsUtil {
         System.out.println("sorted对集合做自然排序");
         list.stream().filter(str -> str.startsWith("b")).sorted().forEach(System.out::println);
         System.out.println("sorted对集合做自定义排序");
-        Comparator<String> comparator = (s1, s2) -> Integer.valueOf(s1.substring(s1.length() - 1)) - Integer.valueOf(s2.substring(s2.length() - 1));
+        //当s1-s2的时候默认是从小到大，反之则相反
+        Comparator<String> comparator = (s1, s2) -> Integer.valueOf(s2.substring(s2.length() - 1)) - Integer.valueOf(s1.substring(s1.length() - 1));
         list.stream().sorted(comparator).forEach(System.out::println);
         System.out.println("map对集合每个元素做中间层处理");
         list.stream().sorted(comparator).map(String::toUpperCase).forEach(System.out::println);
         System.out.println("match对集合做条件判断返回布尔结果,anyMatch(部分符合条件）、allMatch（全符合条件）、noneMatch（全不符合条件");
         System.out.println(list.stream().anyMatch(s -> s.startsWith("a")));
-        ;
         System.out.println(list.stream().allMatch(s -> s.startsWith("a")));
-        ;
         System.out.println(list.stream().noneMatch(s -> s.startsWith("q")));
-        ;
         System.out.println("count返回流中元素数目");
         System.out.println(list.stream().count());
         System.out.println("reduce通过制定的方法对元素进行削减操作");

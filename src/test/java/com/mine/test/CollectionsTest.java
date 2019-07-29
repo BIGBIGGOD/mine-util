@@ -2,6 +2,8 @@ package com.mine.test;
 
 import com.mine.model.User;
 import lombok.extern.slf4j.Slf4j;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.junit.Test;
 
 import java.io.File;
@@ -133,6 +135,45 @@ public class CollectionsTest {
         Object obj = c.newInstance();
         Method method = clazz.getMethod(methodName);
         method.invoke(obj);
+    }
+
+    /**
+     * 获取set集合的第一个元素
+     */
+    @Test
+    public void test7() {
+        Set<String> hotWordSet = new TreeSet<>();
+        hotWordSet.add("1");
+        hotWordSet.add("2");
+        hotWordSet.add("3");
+        System.out.println(hotWordSet.iterator().next());
+    }
+
+    /**
+     * 测试
+     */
+    @Test
+    public void test8() {
+        JSONObject jsonObject = new JSONObject();
+//        Set<Integer> set = new HashSet<>();
+//        set.add(1);
+//        set.add(2);
+//        set.add(3);
+//        JSONArray jsonObject1 = JSONArray.fromObject(set);
+//        jsonObject1.element(4);
+//        System.out.println(jsonObject1.toString());
+//        JSONArray jsonArray = new JSONArray();
+//        jsonArray.element(1);
+//        String json = jsonArray.toString();
+//        JSONArray jsonArray1 = JSONArray.fromObject(json);
+//        jsonArray1.element(2);
+//        System.out.println(jsonArray1.toString());
+        String json = "[4,523,4,211,5]";
+        JSONArray jsonArray = JSONArray.fromObject(json);
+        List<Integer> idArray = JSONArray.toList(jsonArray, Integer.class);
+        for (Integer i : idArray) {
+            System.out.println(i);
+        }
     }
 
 }
