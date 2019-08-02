@@ -22,13 +22,6 @@ public class User extends CommonResult {
     private int age;
     private long time;
 
-    @Override
-    public String toString() {
-        return "User{" +
-            "age=" + age +
-            '}';
-    }
-
     public User(String name, String sex, int age) {
         this.name = name;
         this.sex = sex;

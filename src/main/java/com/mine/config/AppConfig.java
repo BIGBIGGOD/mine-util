@@ -6,6 +6,8 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
+import org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.sql.DataSource;
@@ -92,6 +94,30 @@ public class AppConfig {
         dataSource.setMinIdle(minIdle);
         dataSource.setMaxWait(maxWait);
         return dataSource;
+    }
+
+    /**
+     * 配置文件上传
+     * @return
+     */
+    @Bean
+    public CommonsMultipartResolver multipartResolver() {
+        CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+        commonsMultipartResolver.setDefaultEncoding("UTF-8");
+        commonsMultipartResolver.setMaxUploadSize(5400000);
+        return commonsMultipartResolver;
+    }
+
+    /**
+     * freemarker配置工厂类，注入模板路径,pom还未配置
+     * @return
+     */
+    @Bean
+    public FreeMarkerConfigurationFactoryBean freeMarkerConfigurationFactoryBean() {
+        FreeMarkerConfigurationFactoryBean freeMarkerConfigurationFactoryBean = new FreeMarkerConfigurationFactoryBean();
+        freeMarkerConfigurationFactoryBean.setDefaultEncoding("UTF-8");
+        freeMarkerConfigurationFactoryBean.setTemplateLoaderPath("/WEB-INF/ftl/");
+        return freeMarkerConfigurationFactoryBean;
     }
 
 }
