@@ -12,7 +12,7 @@ public class ImportExcelReportUtilTest extends BaseJunit4Test {
 
     @Test
     public void testGetDataFromExcel() {
-        String path = "D:\\测试文件夹\\测试.xls";
+        String path = "F:\\测试文件夹\\测试.xls";
         log.info(" path={}：",path);
         ImportExcelReportUtil.getDataFromExcel(path);
     }

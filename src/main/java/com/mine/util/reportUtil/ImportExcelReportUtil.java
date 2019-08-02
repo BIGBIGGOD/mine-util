@@ -78,7 +78,7 @@ public class ImportExcelReportUtil {
         String[] arr = new String[]{"contractId", "contractName", "projectName", "serviceType", "contractType"};
         //将所有行的数据存储在一个List集合中
         List<Map<String, String>> dataList = new ArrayList();
-        for (int i = 3; i <= totalRowNum; i++) {
+        for (int i = 0; i <= totalRowNum; i++) {
             //获得第i行对象
             Row row = sheet.getRow(i);
             //当前row最后一个不为空的列

@@ -95,7 +95,7 @@ public class CollectionsTest {
 //        Method[] methods = user.getClass().getMethods();
         Method[] methods = clzz.getMethods();
         Field[] fields = clzz.getDeclaredFields();
-        Constructor c =clzz.getConstructor();
+        Constructor c = clzz.getConstructor();
         Object obj = c.newInstance();
         for (Field field : fields) {
             System.out.println(field.getName());
@@ -150,7 +150,7 @@ public class CollectionsTest {
     }
 
     /**
-     * 测试
+     * 使用JSONArray做List操作
      */
     @Test
     public void test8() {
@@ -174,6 +174,24 @@ public class CollectionsTest {
         for (Integer i : idArray) {
             System.out.println(i);
         }
+    }
+
+    /**
+     * set转list
+     */
+    @Test
+    public void test9() {
+        Set<Integer> set = new HashSet<>();
+        set.add(1);
+        set.add(2);
+        set.add(3);
+        List<Integer> list = new ArrayList<>(set);
+        list.set(0, 9999);
+        Integer[] array = list.toArray(new Integer[list.size()]);
+    }
+
+    @Test
+    public void test10() {
     }
 
 }
