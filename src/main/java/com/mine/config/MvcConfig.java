@@ -10,9 +10,9 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
  * @Description: spring与spring Mvc整合类
  * Created by jiangqd on 2019/1/12.
  */
-@Configuration
+//@Configuration
 //@EnableWebMvc
-@ComponentScan(basePackages = {"com.mine"})
+//@ComponentScan(basePackages = {"com.mine"})
 public class MvcConfig implements WebMvcConfigurer {
 
     /**

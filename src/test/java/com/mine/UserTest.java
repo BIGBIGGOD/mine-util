@@ -10,10 +10,9 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Map;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by jiangqd on 2019/1/12.
@@ -61,6 +60,22 @@ public class UserTest extends BaseJunit4Test {
         String json = new Gson().toJson(map);
         ObjectMapper mapper = new ObjectMapper();
         HashMap<String, Object> jsonMap = mapper.readValue(json, HashMap.class);
+    }
+
+    @Test
+    public void test4() throws ParseException {
+    }
+
+    public static void main(String[] args) throws ParseException {
+        String pattern = "yyyy-MM-dd hh:mm:ss";
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+        String time1 = "2019-08-04 12:00:12";
+        Date date1 = sdf.parse(time1);
+        Long dateNum1 = date1.getTime();
+        String time2 = "2019-08-04 12:00:00";
+        Date date2 = sdf.parse(time2);
+        Long dateNum2 = date2.getTime();
+        System.out.println();
     }
 
 }
