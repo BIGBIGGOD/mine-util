@@ -15,21 +15,21 @@ import javax.servlet.ServletRegistration;
  * @datetime 2019/1/2 13:13
  * @Version 1.0
  */
-public class MyWebApplicationInitializer implements WebApplicationInitializer {
+public class MyWebApplicationInitializer /*implements WebApplicationInitializer*/ {
     /**
      * web程序入口
      * @param servletContext
      * @throws ServletException
      */
-    @Override
-    public void onStartup(ServletContext servletContext) {
-        AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext();
-        applicationContext.register(DispatcherServletInitializer.class);
-        applicationContext.refresh();
-
-        DispatcherServlet dispatcherServlet = new DispatcherServlet(applicationContext);
-        ServletRegistration.Dynamic registration = servletContext.addServlet("app", dispatcherServlet);
-        registration.addMapping("/");
-        registration.setLoadOnStartup(0);
-    }
+//    @Override
+//    public void onStartup(ServletContext servletContext) {
+//        AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext();
+//        applicationContext.register(DispatcherServletInitializer.class);
+//        applicationContext.refresh();
+//
+//        DispatcherServlet dispatcherServlet = new DispatcherServlet(applicationContext);
+//        ServletRegistration.Dynamic registration = servletContext.addServlet("app", dispatcherServlet);
+//        registration.addMapping("/");
+//        registration.setLoadOnStartup(0);
+//    }
 }

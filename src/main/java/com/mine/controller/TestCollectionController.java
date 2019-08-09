@@ -2,6 +2,7 @@ package com.mine.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +26,7 @@ public class TestCollectionController extends BaseController {
      *
      * @param json
      */
-    @RequestMapping("test1")
+    @RequestMapping(value = "test1",method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     @ResponseBody
     public void test(String json) {
         try {
