@@ -1,7 +1,10 @@
 package com.mine.filter;
 
 /**
- * Created by jiangqingdong on 2017/1/16 16:30.
+ * @author jiangqingdong
+ * @version v1.0
+ * @Description 过滤器设置
+ * @DATE 2019/8/9 11:51
  */
 
 import java.io.IOException;
