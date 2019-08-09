@@ -1,8 +1,8 @@
 package com.mine.util.httpClientUtil;
 
 import com.google.gson.Gson;
-import com.mine.common.enums.CommonEnum;
-import com.mine.common.exception.BasesException;
+import com.mine.enums.CommonEnum;
+import com.mine.exception.BasesException;
 import com.mine.util.httpClientUtil.arg.Arg;
 import com.mine.util.httpClientUtil.arg.DownloadArg;
 import com.mine.util.httpClientUtil.arg.UploadArg;

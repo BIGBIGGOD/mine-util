@@ -9,11 +9,14 @@
         <package name="com.mine.model"/>
     </typeAliases>
 
-    <!--<plugins>
-        &lt;!&ndash; 分页插件 &ndash;&gt;
-        <plugin interceptor="com.weijuju.iag.common.mybatis.pagination.MySQLPaginationInterceptor" />
-        &lt;!&ndash; SQL拦截插件 &ndash;&gt;
-        <plugin interceptor="com.weijuju.iag.common.mybatis.pagination.MySQLExcutorInterceptor" />
-    </plugins>-->
+    <plugins>
+        <!-- 分页插件 -->
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库-->
+            <property name="dialect" value="mysql"/>
+        </plugin>
+        <!-- SQL拦截插件 -->
+        <!--<plugin interceptor="com.weijuju.iag.common.mybatis.pagination.MySQLExcutorInterceptor" />-->
+    </plugins>
 
 </configuration>

@@ -132,6 +132,7 @@ public class RedisCache implements Cache{
                 finalKey = key.toString();
             }
             final Object object = redisTemplate.execute(new RedisCallback<Object>() {
+                @Override
                 public Object doInRedis(RedisConnection connection) throws DataAccessException {
                     try {
                         byte[] key = finalKey.getBytes();

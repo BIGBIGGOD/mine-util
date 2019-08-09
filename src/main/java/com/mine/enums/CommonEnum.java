@@ -1,4 +1,4 @@
-package com.mine.common.enums;
+package com.mine.enums;
 
 /**
  * @eprecated 常用枚举
@@ -8,14 +8,15 @@ public enum CommonEnum {
 
     // 成功
     SUCCESS(0, "成功"),
-    FAILURE(1, "失败"),
     // 错误
-    PARAMS_ERROR(-1, "参数错误"),
-    SERVER_BUSY(-2, "系统繁忙"),
-    SYSTEM_ERROR(-3, "系统错误"),
-    OPERATE_DB_FAIL(-4, "数据库操作失败"),
-    UNKNOWN(-5, "未知错误"),
-    INTERFAC_EERROR(-6,"调用接口错误");
+    FAILURE(-1, "失败"),
+    PARAMS_ERROR(-2, "参数错误"),
+    SERVER_BUSY(-3, "系统繁忙"),
+    SYSTEM_ERROR(-4, "系统错误"),
+    OPERATE_DB_FAIL(-5, "数据库操作失败"),
+    UNKNOWN(-6, "未知错误"),
+    INTERFAC_EERROR(-7, "调用接口错误"),
+    DATA_NOT_EXISTS(-8, "数据不存在");
 
     private int code;
     private String message;

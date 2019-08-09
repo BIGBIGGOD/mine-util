@@ -10,7 +10,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.mine.common.enums.ErrorCode;
+import com.mine.enums.CommonEnum;
 
 /**
  * Created by jiangqingdong on 2019/1/24.
@@ -49,8 +49,8 @@ public abstract class BaseController {
 
     public Result successResponse(Object model) {
         Result result = new Result();
-        result.setRetCode(ErrorCode.SUCCESS.getCode());
-        result.setMsg("success");
+        result.setRetCode(CommonEnum.SUCCESS.getCode());
+        result.setMsg(CommonEnum.SUCCESS.getMessage());
         result.setModel(model);
         return result;
     }

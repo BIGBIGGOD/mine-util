@@ -1,4 +1,4 @@
-package com.mine.common.exception;
+package com.mine.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

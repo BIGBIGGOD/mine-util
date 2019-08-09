@@ -1,4 +1,4 @@
-package com.mine.config.aop;
+package com.mine.aops;
 
 import com.google.common.base.Joiner;
 import lombok.extern.slf4j.Slf4j;
