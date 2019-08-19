@@ -11,11 +11,14 @@ import com.mine.model.User;
  * @DATE 2019/8/2 10:39
  * @Copyright Copyright © 2019 深圳花儿绽放网络科技股份有限公司. All rights reserved.
  */
-public class SpringTest {
+public class SpringContextTest {
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("springtest.xml");
-        User user = context.getBean(User.class);
-        System.out.println(user);
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-test.xml");
+        User user1 = (User) context.getBean("user1");
+        User user2 = (User) context.getBean("user2");
+        User user3 = (User) context.getBean("user3");
+        User user4 = (User) context.getBean("user4");
+        System.out.println("");
     }
 }

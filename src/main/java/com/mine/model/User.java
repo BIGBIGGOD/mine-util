@@ -1,11 +1,11 @@
 package com.mine.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.mine.util.httpClientUtil.result.CommonResult;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Created by jiangqd on 2019/3/11.
@@ -22,6 +22,11 @@ public class User extends CommonResult {
     private int age;
     private long time;
 
+    public User(String name, String pwd) {
+        this.name = name;
+        this.pwd = pwd;
+    }
+
     public User(String name, String sex, int age) {
         this.name = name;
         this.sex = sex;
@@ -36,20 +41,18 @@ public class User extends CommonResult {
         this.age = age;
     }
 
-    public void say1() {
-        System.out.println("你好啊");
-    }
-
-    public void say3() {
-        System.out.println("你好");
-    }
-
-    public void say2() {
-        System.out.println("好");
-    }
-
     public void say4(Integer str) {
         System.out.println(str);
         System.out.println("nishiakgjeifjaewfjeahj");
+    }
+
+    public static User buildUserBean(String type){
+        if ("悟空".equals(type)) {
+            return new User("悟空");
+        }
+        if ("八戒".equals(type)) {
+            return new User("八戒");
+        }
+        throw  new IllegalArgumentException("type must be \"悟空\" or \"八戒\"");
     }
 }
