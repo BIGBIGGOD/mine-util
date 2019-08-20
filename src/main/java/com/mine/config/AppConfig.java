@@ -38,6 +38,7 @@ import javax.sql.DataSource;
 //@PropertySource("classpath:/application.properties")
 
 /**
+ * @author admin
  * @EnableAspectJAutoProxy 注解开启AOP,
  * @EnableTransactionManagement 注解开启spring事务管理,
  * @EnableCaching 注解开启spring缓存

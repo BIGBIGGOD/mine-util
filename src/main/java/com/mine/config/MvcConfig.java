@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 /**
+ * @author admin
  * @Description: spring与spring Mvc整合类
  * Created by jiangqd on 2019/1/12.
  */

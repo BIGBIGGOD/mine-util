@@ -1,6 +1,7 @@
 package com.mine.enums;
 
 /**
+ * @author jiangqd
  * @eprecated 常用枚举
  * Created by jiangqd on 2019/1/15.
  */

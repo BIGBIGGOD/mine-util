@@ -1,5 +1,8 @@
 package com.mine.redis;
 
+/**
+ * @author admin
+ */
 public class RedisRuntimeException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;

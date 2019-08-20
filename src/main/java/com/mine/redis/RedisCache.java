@@ -18,6 +18,7 @@ import com.mine.util.javaSerializeUtil.JavaSerializeUtil;
 
 /**
  * 缓存注解使用
+ * @author admin
  */
 @Repository
 public class RedisCache implements Cache{
@@ -211,4 +212,4 @@ public class RedisCache implements Cache{
         return serializableObj;
     }
 
-}  
+}

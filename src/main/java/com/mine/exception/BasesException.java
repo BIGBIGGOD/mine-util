@@ -5,8 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
+ * @author jiangqd
  * @Description 基础异常类
- * Created by jiangqd on 2019/1/15.
+ * @Date 2019/1/15.
  */
 @Data
 @NoArgsConstructor

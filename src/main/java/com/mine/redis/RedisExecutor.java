@@ -3,7 +3,7 @@ package com.mine.redis;
 /**
  * Redis执行器
  * 
- * @author wujian
+ * @author admin
  * 
  */
 public interface RedisExecutor {
