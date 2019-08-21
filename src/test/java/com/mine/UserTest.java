@@ -1,24 +1,24 @@
 package com.mine;
 
-import com.alibaba.fastjson.JSONObject;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.mine.mapper.CeShiMapper;
-import com.mine.model.User;
-import lombok.extern.slf4j.Slf4j;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.mine.mapper.CeShiMapper;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Created by jiangqd on 2019/1/12.
  */
 @Slf4j
-public class UserTest extends BaseJunit4Test {
+public class UserTest {
 
     @Autowired
     private CeShiMapper ceShiMapper;
@@ -43,7 +43,7 @@ public class UserTest extends BaseJunit4Test {
         Integer i5 = 127;//java在编译的时候,被翻译成-> Integer i5 = Integer.valueOf(127);
         Integer i6 = 127;
         System.out.println(i5 == i6);//true
-        Integer a= 127;
+        Integer a = 127;
         Integer b = 127;
         System.out.println(a == b);
         System.out.println(i2 == i3);
@@ -63,19 +63,29 @@ public class UserTest extends BaseJunit4Test {
     }
 
     @Test
-    public void test4() throws ParseException {
+    public void test4() {
+//        while (true) {
+//            Scanner in = new Scanner(System.in);
+//            int n = in.nextInt();
+            int n = -300;
+            if ((n % 300) == 0) {
+                System.out.println("你好啊");
+            } else {
+                System.out.println("唉");
+            }
+//        }
     }
 
-    public static void main(String[] args) throws ParseException {
-        String pattern = "yyyy-MM-dd hh:mm:ss";
-        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-        String time1 = "2019-08-04 12:00:12";
-        Date date1 = sdf.parse(time1);
-        Long dateNum1 = date1.getTime();
-        String time2 = "2019-08-04 12:00:00";
-        Date date2 = sdf.parse(time2);
-        Long dateNum2 = date2.getTime();
-        System.out.println();
+    public static void main(String[] args) {
+        while (true) {
+            Scanner in = new Scanner(System.in);
+            int n = in.nextInt();
+            if ((n % 300) == 0) {
+                System.out.println("你好啊");
+            } else {
+                System.out.println("唉");
+            }
+        }
     }
 
 }
