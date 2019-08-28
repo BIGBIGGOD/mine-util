@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2019/1/12
  */
 @Slf4j
-public class RedisTest extends BaseJunit4Test {
+public class RedisStringTest extends BaseJunit4Test {
 
     @Autowired
     private RedisStringUtil redisStringUtil;
@@ -41,5 +41,12 @@ public class RedisTest extends BaseJunit4Test {
     @Test
     public void test5() {
         redisStringUtil.query2("[\"测试2\",\"测试3\"]");
+    }
+
+    @Test
+    public void test6() {
+        redisStringUtil.save1("测试1");
+        String str = redisStringUtil.query3("测试1");
+        System.out.println(str);
     }
 }

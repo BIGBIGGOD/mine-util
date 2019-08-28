@@ -42,12 +42,12 @@ public class RedisStringUtil {
      */
     private static final int EXPIRE = 60 * 30;
     /**
-     * 第一种普通调用没有返回值的key
+     * redis操作key
      */
     private static final String KEY_STRING = "redis:util:save:string:";
 
     /**
-     * 总共有四种调用方式
+     * 总共有四种关于封装方法的调用方式
      */
 
     /**
@@ -62,7 +62,7 @@ public class RedisStringUtil {
         }
 
         redisExecutor.doInRedis(instance -> {
-            instance.set(KEY_STRING, json);
+            instance.set(KEY_STRING + json, json);
             instance.expire(KEY_STRING, EXPIRE);
         });
     }
@@ -152,6 +152,22 @@ public class RedisStringUtil {
             }
             pipeline.syncAndReturnAll();
             return responses;
+        });
+    }
+
+    /**
+     * 普通查询
+     *
+     * @param json
+     * @return
+     */
+    public String query3(String json) {
+        if (StringUtils.isBlank(json)) {
+            return null;
+        }
+        return redisExecutor.doInRedis(instance -> {
+            String key = KEY_STRING + json;
+            return instance.get(key);
         });
     }
 

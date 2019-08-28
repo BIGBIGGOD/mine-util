@@ -23,6 +23,7 @@ public class DateUtil {
     private static ThreadLocal<Map<String, SimpleDateFormat>> dateFormatMap = new ThreadLocal<Map<String, SimpleDateFormat>>() {
         @Override
         protected Map<String, SimpleDateFormat> initialValue() {
+            //初始化一个HashMap，避免空指针异常
             System.out.println(Thread.currentThread().getName() + "init pattern:" + Thread.currentThread());
             return new HashMap<String, SimpleDateFormat>(1);
         }
@@ -58,12 +59,21 @@ public class DateUtil {
         return sdf.format(date);
     }
 
+    public static String getDateStr(Date date, String pattern) {
+        SimpleDateFormat sdf = getSdf(pattern);
+        return sdf.format(date);
+    }
+
     /**
      * @param date
      * @return
      * @throws ParseException
      */
     public static Date getDate(String date) throws ParseException {
+        return getSdf(pattern).parse(date);
+    }
+
+    public static Date getDate(String date, String pattern) throws ParseException {
         return getSdf(pattern).parse(date);
     }
 
@@ -75,9 +85,7 @@ public class DateUtil {
      * @throws ParseException
      */
     public static boolean getRes(String createTime) throws ParseException {
-        long time = getDate(createTime).getTime();
-        long now = System.currentTimeMillis();
-        return (now - time) > (7 * 24 * 60 * 60 * 1000);
+        return (System.currentTimeMillis() - getDate(createTime).getTime()) > (7 * 24 * 60 * 60 * 1000);
 
     }
 
@@ -115,7 +123,4 @@ public class DateUtil {
         String DateStr2 = getDateStr(newDate);
     }
 
-    public static void main(String[] args) {
-        getVairousProperty(new Date());
-    }
 }
