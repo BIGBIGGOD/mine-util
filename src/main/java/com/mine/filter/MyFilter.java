@@ -22,7 +22,15 @@ import lombok.extern.slf4j.Slf4j;
 @WebFilter(filterName = "myFilter", urlPatterns = {"/test/*"})
 public class MyFilter implements Filter {
 
-//    private PlatformService platformService = SpringContextManager.getBean(PlatformService.class);
+    //定义需要加载的bean
+    /*private static PlatformService platformService;
+
+    static{
+        //获取当前web上下文
+        WebApplicationContext ctx = ContextLoader.getCurrentWebApplicationContext();
+        //从上下文中获取bean
+        platformService = ctx.getBean(PlatformService.class);
+    }*/
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

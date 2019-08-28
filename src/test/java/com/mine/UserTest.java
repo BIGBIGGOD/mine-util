@@ -13,6 +13,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.mine.mapper.CeShiMapper;
 import lombok.extern.slf4j.Slf4j;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 /**
  * Created by jiangqd on 2019/1/12.
@@ -64,16 +66,9 @@ public class UserTest {
 
     @Test
     public void test4() {
-//        while (true) {
-//            Scanner in = new Scanner(System.in);
-//            int n = in.nextInt();
-            int n = -300;
-            if ((n % 300) == 0) {
-                System.out.println("你好啊");
-            } else {
-                System.out.println("唉");
-            }
-//        }
+        JSONObject json = new JSONObject();
+        Object obj = json.get("sss");
+        String str = json.toString();
     }
 
     public static void main(String[] args) {

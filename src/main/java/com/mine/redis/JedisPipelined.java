@@ -1,5 +1,7 @@
 package com.mine.redis;
 
+import org.apache.poi.ss.formula.functions.T;
+
 import redis.clients.jedis.Pipeline;
 
 /**
@@ -20,7 +22,7 @@ import redis.clients.jedis.Pipeline;
  * @author jiangqingdong
  * 
  */
-public interface JedisPipelined {
+public interface JedisPipelined<T> {
 
 	/**
 	 * 使用jedis pipeline批量执行一组redis命令
@@ -31,5 +33,5 @@ public interface JedisPipelined {
 	 * @throws Exception
 	 *             业务异常可以自行处理
 	 */
-	void runInPipeline(Pipeline pipeline) throws Exception;
+	T runInPipeline(Pipeline pipeline) throws Exception;
 }

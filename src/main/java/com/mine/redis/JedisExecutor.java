@@ -119,13 +119,13 @@ public class JedisExecutor implements RedisExecutor {
 	}
 
 	@Override
-	public void doInPipeline(JedisPipelined pipelined) {
+	public <T> T doInPipeline(JedisPipelined<T> pipelined) {
 		JedisException jedisEx = null;
 		Jedis jedis = getJedis(jedisPool);
 		try {
 			logResourceInfo(jedis);
 			Pipeline pipeline = jedis.pipelined();
-			pipelined.runInPipeline(pipeline);
+			return pipelined.runInPipeline(pipeline);
 		} catch (JedisException e) {
 			// 处理Jedis异常
 			jedisEx = e;
@@ -139,4 +139,9 @@ public class JedisExecutor implements RedisExecutor {
 			finishResource(jedisPool, jedis, broken);
 		}
 	}
+
+//	@Override
+//	public <T> T doInPipeline(JedisPipelined pipeline) {
+//		return null;
+//	}
 }

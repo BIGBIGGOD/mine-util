@@ -181,14 +181,15 @@ public class CollectionsTest {
      */
     @Test
     public void test9() {
-        Set<Integer> set = new HashSet<>();
-        set.add(1);
-        set.add(2);
-        set.add(3);
-        List<Integer> list = new ArrayList<>(set);
-        list.set(0, 9999);
-        Integer[] array = list.toArray(new Integer[list.size()]);
+        Map<String, Integer> map = new HashMap<>();
+        map.put("asjdfk",55);
+        for (Map.Entry obj : map.entrySet()) {
+        String str = obj.getKey().toString();
+        Integer res = Integer.valueOf(obj.getValue().toString());
+            System.out.println(res);
+        }
     }
+
 
     @Test
     public void test10() {
