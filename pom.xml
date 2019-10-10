@@ -50,14 +50,14 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
-            <version>5.0.10.RELEASE</version>
+            <version>${springframework.version}</version>
         </dependency>
 
         <!--这个jar 文件包含支持UI模版（Velocity，FreeMarker，JasperReports），邮件服务，脚本服务(JRuby)，缓存Cache（EHCache），任务计划Scheduling（uartz）方面的类-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
-            <version>5.0.10.RELEASE</version>
+            <version>${springframework.version}</version>
         </dependency>
 
         <!--Spring 测试包 -->
@@ -308,11 +308,6 @@
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper</artifactId>
             <version>4.2.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>5.0.7.RELEASE</version>
         </dependency>
 
     </dependencies>
