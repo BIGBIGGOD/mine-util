@@ -39,4 +39,9 @@ public class FastJsonUtilTest extends BaseJunit4Test {
         System.out.println();
     }
 
+    @Test
+    public void testMapToJson() {
+        FastJsonUtil.mapToJson();
+    }
+
 }
