@@ -81,6 +81,8 @@ public class BuiltInFunctionalUtil {
         optional.get();
         optional.isPresent();
         optional.orElse("kj");
+        //判空
+        Optional.ofNullable("nodes").orElseThrow(() -> new IllegalArgumentException("无计算节点，无法进行计算"));
     }
 
 }
