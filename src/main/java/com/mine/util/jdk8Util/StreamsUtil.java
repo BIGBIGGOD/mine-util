@@ -1,11 +1,13 @@
 package com.mine.util.jdk8Util;
 
-import com.mine.model.User;
-import lombok.extern.slf4j.Slf4j;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+
 import org.springframework.util.StopWatch;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import com.mine.model.User;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Streams(管道)
@@ -15,18 +17,19 @@ import java.util.stream.Collectors;
 public class StreamsUtil {
 
     public static void main(String[] args) {
-        List<String> stringCollection = new ArrayList<>();
-        stringCollection.add("ddd2");
-        stringCollection.add("aaa2");
-        stringCollection.add("bbb1");
-        stringCollection.add("aaa1");
-        stringCollection.add("bbb3");
-        stringCollection.add("ccc9");
-        stringCollection.add("bbb2");
-        stringCollection.add("ddd1");
-
+        forCompare();
+//        List<String> stringCollection = new ArrayList<>();
+//        stringCollection.add("ddd2");
+//        stringCollection.add("aaa2");
+//        stringCollection.add("bbb1");
+//        stringCollection.add("aaa1");
+//        stringCollection.add("bbb3");
+//        stringCollection.add("ccc9");
+//        stringCollection.add("bbb2");
+//        stringCollection.add("ddd1");
+//
 //        method1(stringCollection);
-        method1(stringCollection);
+//        method1(stringCollection);
     }
 
     /**
@@ -57,7 +60,7 @@ public class StreamsUtil {
     }
 
     /**
-     * stream（连续型）与parallelStream（并行）提高性能
+     * stream（连续型）与parallelStream（并行）提高性能,但是线程不安全
      */
     public static void method2() {
         int max = 1999999;
@@ -110,7 +113,31 @@ public class StreamsUtil {
         list.stream().forEach(list3::add);
         System.out.println(list3);
         User user = new User();
+    }
 
+    /**
+     * 遍历方法比较
+     */
+    public static void forCompare() {
+        List<Integer> list = new ArrayList<>();
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start("任务一");
+        for (int i = 0; i < 99999; i++) {
+            list.add(i);
+        }
+        stopWatch.stop();
+        System.out.println("加载时间:" + stopWatch.getLastTaskTimeMillis());
+        stopWatch.start("任务二");
+        list.forEach(System.out::print);
+        System.out.println();
+        stopWatch.stop();
+        System.out.println("普通foreach时间:" + stopWatch.getLastTaskTimeMillis());
+        stopWatch.start("任务三");
+        list.stream().forEach(System.out::print);
+        System.out.println();
+        stopWatch.stop();
+        System.out.println("stream的foreach时间:" + stopWatch.getLastTaskTimeMillis());
+        System.out.println("总时间"+stopWatch.prettyPrint());
     }
 
 }
