@@ -29,14 +29,6 @@ public abstract class BaseController {
         return response;
     }
 
-
-    /**
-     * 错误码
-     *
-     * @param code
-     * @param message
-     * @return
-     */
     public Result response(int code, String message, Object model) {
         Result result = new Result();
         result.setRetCode(code);
@@ -44,6 +36,13 @@ public abstract class BaseController {
         if (model != null) {
             result.setModel(model);
         }
+        return result;
+    }
+
+    public Result successResponse() {
+        Result result = new Result();
+        result.setRetCode(CommonEnum.SUCCESS.getCode());
+        result.setMsg(CommonEnum.SUCCESS.getMessage());
         return result;
     }
 

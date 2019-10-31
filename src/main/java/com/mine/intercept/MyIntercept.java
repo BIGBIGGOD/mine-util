@@ -38,7 +38,7 @@ public class MyIntercept implements HandlerInterceptor {
         String token = request.getParameter("token");
         log.info("token={}", token);
         if (StringUtils.isBlank(token)) {
-            return false;
+            return true;
         }
         return true;
 
@@ -76,7 +76,7 @@ public class MyIntercept implements HandlerInterceptor {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
 
-        log.info("进入postHandle");
+        log.info("进入afterCompletion");
 
     }
 }

@@ -5,11 +5,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 import com.mine.util.httpClientUtil.result.CommonResult;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
  * Created by jiangqd on 2019/3/11.
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

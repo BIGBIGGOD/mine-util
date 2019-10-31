@@ -16,11 +16,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.google.common.collect.ImmutableSet;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @WebFilter(filterName = "myFilter", urlPatterns = {"/test/*"})
 public class MyFilter implements Filter {
+
+    /**
+     * 定义不需要拦截的路径
+     */
+    private static ImmutableSet<String> urlSet = ImmutableSet.of("/test");
 
     //定义需要加载的bean
     /*private static PlatformService platformService;
@@ -55,7 +61,8 @@ public class MyFilter implements Filter {
 
         if (StringUtils.isBlank(token)) {
             log.error("请求参数token={}不能为空", token);
-            rep.sendRedirect("/index.jsp");
+//            rep.sendRedirect("/index.jsp");
+            chain.doFilter(req, rep);
             return;
         }
         log.info("通过myFilter过滤器");

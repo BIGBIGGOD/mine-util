@@ -2,6 +2,7 @@ package com.mine.aops;
 
 import com.google.common.base.Joiner;
 import lombok.extern.slf4j.Slf4j;
+
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -14,13 +15,13 @@ import org.springframework.util.StopWatch;
  * Created by jiangqd on 2019/1/12.
  */
 @Slf4j
-@Component
-@Aspect
+//@Component
+//@Aspect
 public class MyAspect {
 
     private final static char DOT_CHAR = '.';
 
-    //可以使用环绕通知
+    //可以使用环绕通知，第一个*便是方法类型（如public），..表示当前包及子包，第二个*表示类，.*(..)表示任何方法，括号内..表示任意参数
 //    @Around("execution(* com.mine..service.*.*(..))")
     @Around("execution(* com.mine..*.*(..))")
     public Object pointCut(ProceedingJoinPoint pjp) throws Throwable {
@@ -32,6 +33,7 @@ public class MyAspect {
 //        log.info("Service start: serviceMethodNam={}, args={}", serviceMethodNam, args);
 
         // stopwatch可以用来计算一段时间，利用getTotalTimeMillis方法得到执行总时间，利用prettyPrint方法查看大致情况
+        System.out.println("进入MyAspect");
         StopWatch sw = new StopWatch();
         sw.start(pjp.toShortString());
         Object retVal = null;
@@ -41,9 +43,9 @@ public class MyAspect {
 //                log.info("Service finished: serviceMethodNam={}, result={}", serviceMethodNam,
 //                    ToStringBuilder.reflectionToString(retVal, ToStringStyle.JSON_STYLE));
             }
-        }catch (Exception e){
-            log.error(pjp.getSignature().getName()+ "Error:" + e.getMessage());
-        }finally {
+        } catch (Exception e) {
+            log.error(pjp.getSignature().getName() + "Error:" + e.getMessage());
+        } finally {
             sw.stop();
         }
         // stop stopwatch
