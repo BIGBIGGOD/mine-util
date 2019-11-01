@@ -4,11 +4,10 @@ package com.mine.aops;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StopWatch;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -38,6 +37,16 @@ public class LoggerAdvice {
     @AfterThrowing(pointcut = "within(com.mine..*) && @annotation(loggerManage)", throwing = "ex")
     public void addAfterThrowingLogger(JoinPoint joinPoint, LoggerManage loggerManage, Exception ex) {
         log.error("执行 {{}} 异常", loggerManage.description(), ex);
+    }
+
+    @Around("within(com.mine..*) && @annotation(loggerManage)")
+    public Object doAround(ProceedingJoinPoint joinPoint, LoggerManage loggerManage) throws Throwable {
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+        Object result = joinPoint.proceed();
+        System.out.println("执行结果：" + result);
+        System.out.println("执行时间：" + stopWatch.getTotalTimeMillis());
+        return result;
     }
 
     private String parseParames(Object[] parames) {

@@ -14,7 +14,6 @@ import com.google.common.base.Strings;
 import com.mine.aops.LoggerManage;
 import com.mine.model.User;
 import com.mine.service.TestService;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -41,10 +40,10 @@ public class TestCollectionController extends BaseController {
     @RequestMapping(value = "test1", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     @ResponseBody
     @LoggerManage(description = "测试方法")
-    public void test(String json1, String json2, Integer num, @DateTimeFormat(pattern = "yyyy-mm-dd") Date date, User user) {
+    public String test(String json1, String json2, Integer num, @DateTimeFormat(pattern = "yyyy-mm-dd") Date date, User user) {
         Preconditions.checkArgument(!Strings.isNullOrEmpty(json1), "参数错误");
         testService.test1();
         System.out.println(json1);
+        return "你好啊";
     }
-
 }

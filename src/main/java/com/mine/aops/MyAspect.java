@@ -21,7 +21,7 @@ public class MyAspect {
 
     private final static char DOT_CHAR = '.';
 
-    //可以使用环绕通知，第一个*便是方法类型（如public），..表示当前包及子包，第二个*表示类，.*(..)表示任何方法，括号内..表示任意参数
+    //可以使用环绕通知，第一个*表示类型（如public），..表示当前包及子包，第二个*表示类，.*(..)表示任何方法，括号内..表示任意参数
 //    @Around("execution(* com.mine..service.*.*(..))")
     @Around("execution(* com.mine..*.*(..))")
     public Object pointCut(ProceedingJoinPoint pjp) throws Throwable {
