@@ -20,14 +20,11 @@ public class DateUtil {
     /**
      * SimpleDateFormat线程不安全，所以创建ThreadLocal,同时重写初始化方法，返回一个map集合
      */
-    private static ThreadLocal<Map<String, SimpleDateFormat>> dateFormatMap = new ThreadLocal<Map<String, SimpleDateFormat>>() {
-        @Override
-        protected Map<String, SimpleDateFormat> initialValue() {
-            //初始化一个HashMap，避免空指针异常
-            System.out.println(Thread.currentThread().getName() + "init pattern:" + Thread.currentThread());
-            return new HashMap<String, SimpleDateFormat>(1);
-        }
-    };
+    private static ThreadLocal<Map<String, SimpleDateFormat>> dateFormatMap = ThreadLocal.withInitial(() -> {
+        //初始化一个HashMap，避免空指针异常
+        System.out.println(Thread.currentThread().getName() + "init pattern:" + Thread.currentThread());
+        return new HashMap<String, SimpleDateFormat>(1);
+    });
 
     /**
      * 获取SimpleDateFormat对象

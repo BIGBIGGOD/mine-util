@@ -61,6 +61,13 @@ public abstract class BaseController {
         return result;
     }
 
+    public Result failResponse(CommonEnum commonEnum) {
+        Result result = new Result();
+        result.setRetCode(commonEnum.getCode());
+        result.setMsg(commonEnum.getMessage());
+        return result;
+    }
+
 
     public ModelAndView createMav(String viewName, Map<String, ?> model) {
         return new ModelAndView(viewName, model);

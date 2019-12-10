@@ -1,5 +1,8 @@
 package com.mine;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -72,15 +75,39 @@ public class UserTest {
     }
 
     public static void main(String[] args) {
-        while (true) {
-            Scanner in = new Scanner(System.in);
-            int n = in.nextInt();
-            if ((n % 300) == 0) {
-                System.out.println("你好啊");
-            } else {
-                System.out.println("唉");
+        String fileLocal = "C:/Users/Administrator/Desktop/AA.txt";
+        try {
+            FileReader fileReader = new FileReader(new File(fileLocal));
+            BufferedReader reader = new BufferedReader(fileReader);
+            String line = null;
+            Boolean skip = true;
+            int i = 0;
+            while ((line = reader.readLine()) != null) {
+                try {
+                    String[] arr = line.split(",");
+                    int num = Integer.valueOf(arr[0]);
+                    int money = Integer.valueOf(arr[1]);
+                    System.out.print(money + "\t");
+                    System.out.print(num + "\t");
+                    int totalMoney = num * money;
+                    System.out.println(totalMoney);
+                    i++;
+                }catch (Exception e) {
+                    System.out.println("异常");
+                    i++;
+                }
             }
+            System.out.println("总条数" + i);
+
+            reader.close();
+            fileReader.close();
+            System.out.println("总条数" + i);
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
+        System.out.println("你哈啊");
     }
 
 }

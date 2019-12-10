@@ -3,7 +3,9 @@ package com.mine.util.dataSourceUtil;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Created by jiangqd on 2019/1/21.
+ *
+ * @author jiangqd
+ * @date 2019/1/21
  */
 @Slf4j
 public class DataSourceUtil {

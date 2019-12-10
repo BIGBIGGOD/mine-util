@@ -93,7 +93,6 @@ public class HttpClientUtilTest extends BaseJunit4Test {
                 length = bufferedInputStream.read(buffer);
             }
             bufferedOutputStream.flush();
-
         } catch (IOException e) {
             log.error("生成文件异常，e={}",e);
         }finally {

@@ -1,18 +1,13 @@
 package com.mine.util.cacheUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import lombok.extern.slf4j.Slf4j;
-import org.ansj.domain.Result;
-import org.ansj.domain.Term;
-import org.ansj.splitWord.analysis.IndexAnalysis;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang.StringUtils;
-
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
 
 /**
  * @author jiangqingdong
@@ -32,8 +27,8 @@ public class LocalCacheUtil {
 
     /**
      * 刷新本地缓存
-     *      - 清除当前缓存
-     *      - 重新初始化
+     * - 清除当前缓存
+     * - 重新初始化
      */
     public void flushLocalCache() {
         listLocalCache.invalidateAll();
@@ -44,7 +39,6 @@ public class LocalCacheUtil {
 
     /**
      * 初始化本地缓存
-     *
      * TODO 【注意】若后期数据过多，需要考虑 Tomcat 的内存支撑
      * 注解@PostConstruct表示在项目构建的时候就会执行
      */

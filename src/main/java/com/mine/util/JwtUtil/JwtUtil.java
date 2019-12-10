@@ -45,7 +45,11 @@ public class JwtUtil {
         Date expirationDate = new Date(System.currentTimeMillis() + EXPIRE_TIME);
         //SignatureAlgorithm设置加密方式
         //SECRET设置加密的密钥，在之后的解密时需要再次用到
-        return Jwts.builder().setClaims(claims).setExpiration(expirationDate).signWith(SignatureAlgorithm.HS512, SECRET).compact();
+        return Jwts.builder()
+                .setClaims(claims)
+                .setExpiration(expirationDate)
+                .signWith(SignatureAlgorithm.HS512, SECRET)
+                .compact();
     }
 
     /**
