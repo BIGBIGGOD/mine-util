@@ -110,4 +110,17 @@ public class UserTest {
         System.out.println("你哈啊");
     }
 
+    @Test
+    public void test() {
+//        ThreadLocal<String> test = ThreadLocal.withInitial(() -> "xx");
+//        System.out.println(test.get());
+//        test.set("aaa");
+//        System.out.println(test.get());
+        if ("Y".equals(null)) {
+            System.out.println("你哈啊");
+        }else {
+            System.out.println("xx");
+        }
+    }
+
 }

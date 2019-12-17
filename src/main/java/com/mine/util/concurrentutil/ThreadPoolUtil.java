@@ -17,6 +17,13 @@ public class ThreadPoolUtil {
 
     /**
      * 自定义创建线程池
+     * 核心线程数量：看是否多为IO任务，一般设置为当前服务器cpu核心数*2+1、
+     * 最大线程数量：根据业务所需设置、
+     * 线程池维护线程所允许的空闲时间：根据业务所需设置、
+     * 时间单位：根据业务所需设置、
+     * 线程池队列：有四种，根据业务所需设置、
+     * 指定创建线程的工厂：根据业务所需设置，主要设置线程名、
+     * 线程池对拒绝任务(无线程可用)的处理策略：暂无
      */
     public static final ThreadPoolExecutor THREAD_POOL_EXECUTOR = new ThreadPoolExecutor(CPU_SIZE*2+1, 500, 0,
         TimeUnit.MILLISECONDS, new LinkedBlockingDeque<>(), new ThreadFactoryBuilder().setDaemon(false).setNameFormat("Thread-name-%d").build()

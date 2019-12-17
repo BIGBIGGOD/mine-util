@@ -15,6 +15,6 @@ public class FileUtilTest extends BaseJunit4Test {
 
     @Test
     public void testFileReader() {
-        FileReaderUtile.FileReader();
+        FileReaderUtil.test();
     }
 }
