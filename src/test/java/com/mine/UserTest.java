@@ -112,15 +112,13 @@ public class UserTest {
 
     @Test
     public void test() {
-//        ThreadLocal<String> test = ThreadLocal.withInitial(() -> "xx");
-//        System.out.println(test.get());
-//        test.set("aaa");
-//        System.out.println(test.get());
-        if ("Y".equals(null)) {
-            System.out.println("你哈啊");
-        }else {
-            System.out.println("xx");
-        }
+        String deTel = "12345678901";
+        String tel = new StringBuilder(deTel).replace(3, 7, "xxxx").toString();
+
+        String str = "xxx--%s--sss";
+        String res = String.format(str, "你好啊");
+
+        System.out.println(res);
     }
 
 }
