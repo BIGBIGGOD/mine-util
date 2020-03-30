@@ -1,4 +1,4 @@
-package com.mine.util.testUtil;
+package com.mine.util.threadUtil;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;

@@ -1,4 +1,6 @@
-package com.mine.util.testUtil;
+package com.mine.util.threadUtil;
+
+import com.mine.util.threadUtil.ThreadTest;
 
 /**
  * @author jiangqingdong

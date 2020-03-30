@@ -12,5 +12,5 @@ public interface TestService {
     /**
      * 测试
      */
-    public void test1();
+    void test1();
 }

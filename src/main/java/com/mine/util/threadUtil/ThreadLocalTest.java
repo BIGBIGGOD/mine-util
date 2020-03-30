@@ -1,4 +1,4 @@
-package com.mine.util.testUtil;
+package com.mine.util.threadUtil;
 
 import static com.mine.util.concurrentutil.ThreadPoolUtil.THREAD_POOL_EXECUTOR;
 
