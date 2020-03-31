@@ -19,6 +19,7 @@ public class DateUtil {
 
     /**
      * SimpleDateFormat线程不安全，所以创建ThreadLocal,同时重写初始化方法，返回一个map集合
+     * 调用 format 方法时，多个线程会同时调用 calendar.setTime 方法，可能一个线程刚设置好 time 值另外的一个线程马上把设置的 time 值给修改了导致返回的格式化时间可能是错误的
      */
     private static ThreadLocal<Map<String, SimpleDateFormat>> dateFormatMap = ThreadLocal.withInitial(() -> {
         //初始化一个HashMap，避免空指针异常
