@@ -43,6 +43,7 @@ public class BuiltInFunctionalUtil {
 
     /**
      * 使用Supplier(生产者)能够产生一个给定的泛型类型的对象，使用get方法能够获得。与Functional不同的是Suppliers不接受输入参数
+     * Supplier每次执行的get操作生成的对象都是不同的
      */
     public static void method3() {
         Supplier<User> supplier = User::new;
@@ -53,7 +54,9 @@ public class BuiltInFunctionalUtil {
      * 代表在一个单一的输入参数上执行操作
      */
     public static void method4() {
-        Consumer<User> consumer = user -> System.out.println("你好啊");
+        //新建一个consumer对应并在之后定义对应的操作
+        Consumer<User> consumer = user -> System.out.println(user.toString());
+        //执行accept方法接受一个参数并对应该参数执行上面定义的操作
         consumer.accept(new User());
     }
 
