@@ -45,5 +45,6 @@ public class TestCollectionController extends BaseController {
         testService.test1();
         System.out.println(json1);
         return "你好啊";
+        
     }
 }
