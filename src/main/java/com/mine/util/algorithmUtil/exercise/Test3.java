@@ -1,8 +1,5 @@
 package com.mine.util.algorithmUtil.exercise;
 
-import com.google.common.hash.BloomFilter;
-import com.google.common.hash.Funnels;
-
 /**
  * @author jiangqingdong
  * @version v1.0
@@ -12,84 +9,35 @@ import com.google.common.hash.Funnels;
  */
 public class Test3 {
 
-    private static int size = 1000000;//预计要插入多少数据
-
-    private static double fpp = 0.01;//期望的误判率
-
-    private static BloomFilter<Integer> bloomFilter = BloomFilter.create(Funnels.integerFunnel(), size, fpp);
-
     public static void main(String[] args) {
-        String str = "sakjf";
-        int kihi = str.hashCode();
-        //插入数据
-        for (int i = 0; i < 1000000; i++) {
-            bloomFilter.put(i);
-        }
-        int count = 0;
-        for (int i = 1000000; i < 2000000; i++) {
-            if (bloomFilter.mightContain(i)) {
-                count++;
-                System.out.println(i + "误判了");
-            }
-        }
-        System.out.println("总共的误判数:" + count);
+
     }
 
+    public int xxx(int[] date, int[] use) {
+        int[] arr = new int[366];
+        int min = date[0];
+        int max = date[date.length -1];
+        for (int i = 0; i < date.length; i++) {
 
-        public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-            return 0;
         }
-}
+        return 0;
+    }
 
-class Solution {
-    public double findMedianSortedArrays(int[] A, int[] B) {
-        int m = A.length;
-        int n = B.length;
-        // to ensure m<=n
-        if (m > n) {
-            int[] temp = A;
-            A = B;
-            B = temp;
-            int tmp = m;
-            m = n;
-            n = tmp;
+    public int mincostTickets(int[] days, int[] costs) {
+        int len = days.length, maxDay = days[len - 1], minDay = days[0];
+        int[] dp = new int[maxDay + 31]; // 多扩几天，省得判断 365 的限制
+        // 只需看 maxDay -> minDay，此区间外都不需要出门，不会增加费用
+        for (int d = maxDay, i = len - 1; d >= minDay; d--) {
+            // i 表示 days 的索引
+            // 也可提前将所有 days 放入 Set，再通过 set.contains() 判断
+            if (d == days[i]) {
+                dp[d] = Math.min(dp[d + 1] + costs[0], dp[d + 7] + costs[1]);
+                dp[d] = Math.min(dp[d], dp[d + 30] + costs[2]);
+                i--; // 别忘了递减一天
+            } else dp[d] = dp[d + 1]; // 不需要出门
         }
-        int iMin = 0, iMax = m, halfLen = (m + n + 1) / 2;
-        while (iMin <= iMax) {
-            int i = (iMin + iMax) / 2;
-            int j = halfLen - i;
-            if (i < iMax && B[j - 1] > A[i]) {
-                // i is too small
-                iMin = i + 1;
-            } else if (i > iMin && A[i - 1] > B[j]) {
-                // i is too big
-                iMax = i - 1;
-            } else {
-                // i is perfect
-                int maxLeft = 0;
-                if (i == 0) {
-                    maxLeft = B[j - 1];
-                } else if (j == 0) {
-                    maxLeft = A[i - 1];
-                } else {
-                    maxLeft = Math.max(A[i - 1], B[j - 1]);
-                }
-                if ((m + n) % 2 == 1) {
-                    return maxLeft;
-                }
+        return dp[minDay]; // 从后向前遍历，返回最前的 minDay
 
-                int minRight = 0;
-                if (i == m) {
-                    minRight = B[j];
-                } else if (j == n) {
-                    minRight = A[i];
-                } else {
-                    minRight = Math.min(B[j], A[i]);
-                }
-
-                return (maxLeft + minRight) / 2.0;
-            }
-        }
-        return 0.0;
     }
 }
+
