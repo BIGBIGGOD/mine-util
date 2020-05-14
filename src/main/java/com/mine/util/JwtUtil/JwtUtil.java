@@ -91,13 +91,21 @@ public class JwtUtil {
      */
     public static void getDataDetailFromToken(Claims claims) {
         try {
+            // 发行人
             String username1 = claims.getIssuer();
+            //主题
             String username2 = claims.getSubject();
+            //接收方、用户
             String username3 = claims.getAudience();
+            //到期时间
             Date username4 = claims.getExpiration();
+            //在此之前不可用
             Date username5 = claims.getNotBefore();
+            //jwt签发时间
             Date username6 = claims.getIssuedAt();
+            // jwt的唯一身份标识，主要用来作为一次性token,从而回避重放攻击。
             String username7 = claims.getId();
+
             String str1 = claims.get("1").toString();
             String str2 = claims.get("2").toString();
             String str3 = claims.get("3").toString();
