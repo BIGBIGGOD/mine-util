@@ -37,7 +37,7 @@ public class AtomicClassUtil {
     }
 
     /**
-     * 原子更新数组(3种):AtomicIntegerArray、AtomicLongArray、AtomicRenferenceArray
+     * 原子更新数组(3种):AtomicIntegerArray、AtomicLongArray、AtomicReferenceArray
      */
     public static void method2() {
         String[] arr = new String[]{"sdfs", "df", "mxn./", "z@%@#"};
