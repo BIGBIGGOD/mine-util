@@ -91,7 +91,7 @@ public class JwtUtil {
      */
     public static void getDataDetailFromToken(Claims claims) {
         try {
-            // 发行人xxx
+            // 发行人
             String username1 = claims.getIssuer();
             //主题
             String username2 = claims.getSubject();
