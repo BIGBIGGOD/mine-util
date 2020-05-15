@@ -11,7 +11,6 @@ import com.alibaba.druid.support.http.StatViewServlet;
  * Created by jiangqd on 2019/1/12.
  */
 
-//TODO
 @WebServlet(urlPatterns = "/druid/*",
         initParams = {
                 // IP白名单 (没有配置或者为空，则允许所有访问)

@@ -23,7 +23,7 @@ public class DeadLockUtil {
 //                        dd2.notify();
                     }
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
+                    //  Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -37,7 +37,7 @@ public class DeadLockUtil {
                         System.out.println(Thread.currentThread().getName() + "线程。。");
                     }
                 } catch (Exception e) {
-                    // TODO Auto-generated catch block
+                    //  Auto-generated catch block
                     e.printStackTrace();
                 }
             }

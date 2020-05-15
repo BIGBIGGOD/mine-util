@@ -89,7 +89,7 @@ public class HtmlUtil {
                 }
             }
         } catch (Exception e) {
-            // TODO: handle exception
+            //  handle exception
             log.warn("getPageImg  失败,url:" + url, e.getMessage());
         }
         return imgUrl;
@@ -195,7 +195,7 @@ public class HtmlUtil {
     }
 
     /**
-     * 按照文档结构输出(TODO)
+     * 按照文档结构输出
      */
     public static void importHtmlMore(File in) {
         try {

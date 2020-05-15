@@ -29,7 +29,6 @@ public class MvcConfig implements WebMvcConfigurer {
      * 配置WEB-INF下静态资源访问
      * @param registry
      */
-    //TODO
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resource/**")
@@ -46,7 +45,6 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.enableContentNegotiation(new MappingJackson2JsonView());
     }
 
-    //TODO
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
         configurer.favorPathExtension(true)

@@ -39,7 +39,7 @@ public class LocalCacheUtil {
 
     /**
      * 初始化本地缓存
-     * TODO 【注意】若后期数据过多，需要考虑 Tomcat 的内存支撑
+     * 【注意】若后期数据过多，需要考虑 Tomcat 的内存支撑
      * 注解@PostConstruct表示在项目构建的时候就会执行
      */
     @PostConstruct

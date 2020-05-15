@@ -45,7 +45,7 @@ public class URLUtil {
             URL url = new URL(urlStr);
             domainUrl = url.getProtocol() + "://" + url.getAuthority();
         } catch (Exception e) {
-            // TODO: handle exception
+            //  handle exception
             log.error("getDomainUrl is erro,url :" + urlStr, e);
         }
         return domainUrl;
@@ -58,7 +58,7 @@ public class URLUtil {
             URL url = new URL(urlStr);
             host = url.getHost();
         } catch (Exception e) {
-            // TODO: handle exception
+            //  handle exception
             log.error("getHost is erro,url :" + urlStr, e);
         }
         return host;
