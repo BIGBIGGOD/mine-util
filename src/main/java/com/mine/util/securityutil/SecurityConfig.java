@@ -1,6 +1,5 @@
 package com.mine.util.securityutil;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +19,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.mine.model.ManageUserDo;
+import com.mine.model.UserPermissionDo;
 import com.mine.util.securityutil.entity.AdminUserDetails;
-import com.mine.util.securityutil.entity.SecurityUser;
-import com.mine.util.securityutil.entity.UmsPermission;
 import com.mine.util.securityutil.filter.JwtAuthenticationTokenFilter;
 import com.mine.util.securityutil.response.RestAuthenticationEntryPoint;
 import com.mine.util.securityutil.response.RestfulAccessDeniedHandler;
+import com.mine.util.securityutil.service.SecurityUserService;
 
 
 /**
@@ -34,14 +34,16 @@ import com.mine.util.securityutil.response.RestfulAccessDeniedHandler;
  * @author macro
  * @date 2018/4/26
  */
-//@Configuration
-//@EnableWebSecurity
-//@EnableGlobalMethodSecurity(prePostEnabled = true)
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private RestfulAccessDeniedHandler restfulAccessDeniedHandler;
     @Autowired
     private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+    @Autowired
+    private SecurityUserService securityUserService;
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
@@ -94,21 +96,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
+        //指定加密方法
         return new BCryptPasswordEncoder();
     }
 
     @Override
     @Bean
     public UserDetailsService userDetailsService() {
+
         //获取登录用户信息
         return username -> {
-//            UmsAdmin admin = adminService.getAdminByUsername(username);
-            SecurityUser admin = new SecurityUser();
-            if (admin != null) {
+            ManageUserDo manageUserDo = securityUserService.getUserByUsername(username);
+            if (manageUserDo != null) {
                 //获取当前用户对应的权限集合
-//                List<UmsPermission> permissionList = adminService.getPermissionList(admin.getName());
-                List<UmsPermission> permissionList = new ArrayList<>();
-                return new AdminUserDetails(admin, permissionList);
+                List<UserPermissionDo> permissionList = securityUserService.getUserPermissionList(manageUserDo.getId());
+                return new AdminUserDetails(manageUserDo, permissionList);
             }
             throw new UsernameNotFoundException("用户名或密码错误");
         };

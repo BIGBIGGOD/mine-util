@@ -1,7 +1,7 @@
 package com.mine.util.xmlUtil;
 
 import com.mine.BaseJunit4Test;
-import com.mine.model.User;
+import com.mine.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 

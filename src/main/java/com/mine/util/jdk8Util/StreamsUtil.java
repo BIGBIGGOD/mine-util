@@ -1,12 +1,11 @@
 package com.mine.util.jdk8Util;
 
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import org.springframework.util.StopWatch;
 
-import com.mine.model.User;
+import com.mine.entity.User;
 import lombok.extern.slf4j.Slf4j;
 
 /**

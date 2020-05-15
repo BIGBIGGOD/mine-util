@@ -2,7 +2,7 @@ package com.mine.util.springUtil;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.mine.model.User;
+import com.mine.entity.User;
 
 /**
  * @author jiangqingdong

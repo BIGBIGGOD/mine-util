@@ -1,6 +1,6 @@
 package com.mine.test;
 
-import com.mine.model.User;
+import com.mine.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -90,7 +90,7 @@ public class CollectionsTest {
 //        User user = new User();
 //        Class clzz = User.class;
 //        Class clzz = user.getClass();
-        Class clzz = Class.forName("com.mine.model.User");
+        Class clzz = Class.forName("com.mine.entity.User");
 //        Method[] methods = User.class.getMethods();
 //        Method[] methods = user.getClass().getMethods();
         Method[] methods = clzz.getMethods();

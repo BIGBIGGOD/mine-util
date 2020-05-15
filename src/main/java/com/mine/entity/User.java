@@ -1,4 +1,4 @@
-package com.mine.model;
+package com.mine.entity;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+//加了XmlRootElement注释的实体类在mvc返回的时候会报存在相同属性存在多个的错误
 @XmlRootElement
 public class User extends CommonResult {
 

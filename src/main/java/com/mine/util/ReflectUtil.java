@@ -4,7 +4,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import com.mine.model.User;
+import com.mine.entity.User;
 
 /**
  * @author jiangqingdong
@@ -17,7 +17,7 @@ public class ReflectUtil {
 
     public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, NoSuchFieldException {
         User user1 = new User();
-        Class<?> user2 = Class.forName("com.mine.model.User");
+        Class<?> user2 = Class.forName("com.mine.entity.User");
         Method method = user2.getMethod("say4", Integer.class);
         Method[] methods = user2.getMethods();
         Field field = user2.getDeclaredField("name");

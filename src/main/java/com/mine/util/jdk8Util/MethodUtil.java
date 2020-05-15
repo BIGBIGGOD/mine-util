@@ -1,9 +1,6 @@
 package com.mine.util.jdk8Util;
 
-import com.google.common.base.Predicates;
-import com.mine.model.User;
-
-import java.util.function.Supplier;
+import com.mine.entity.User;
 
 /**
  * 方法和构造函数引用,其实还是另类的实现接口方法输出

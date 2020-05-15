@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.mine.aops.LoggerManage;
-import com.mine.model.User;
+import com.mine.entity.User;
 import com.mine.service.TestService;
 import lombok.extern.slf4j.Slf4j;
 

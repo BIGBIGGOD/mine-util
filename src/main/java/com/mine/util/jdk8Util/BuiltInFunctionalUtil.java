@@ -1,6 +1,6 @@
 package com.mine.util.jdk8Util;
 
-import com.mine.model.User;
+import com.mine.entity.User;
 
 import java.util.Comparator;
 import java.util.Optional;

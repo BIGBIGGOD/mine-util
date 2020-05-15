@@ -6,7 +6,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.function.Consumer;
 
-import com.mine.model.User;
+import com.mine.entity.User;
 
 /**
  * @author jiangqingdong

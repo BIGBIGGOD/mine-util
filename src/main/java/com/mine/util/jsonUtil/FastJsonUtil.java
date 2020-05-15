@@ -1,12 +1,11 @@
 package com.mine.util.jsonUtil;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Maps;
-import com.mine.model.User;
+import com.mine.entity.User;
 import lombok.extern.slf4j.Slf4j;
 
 /**

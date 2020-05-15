@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -30,9 +29,9 @@ public class JwtTokenUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(JwtTokenUtil.class);
     private static final String CLAIM_KEY_USERNAME = "sub";
     private static final String CLAIM_KEY_CREATED = "created";
-//    @Value("${jwt.secret}")
-    private String secret ="df";
-//    @Value("${jwt.expiration}")
+    //    @Value("${jwt.secret}")
+    private String secret = "df";
+    //    @Value("${jwt.expiration}")
     private Long expiration = 21L;
 
     /**
@@ -40,8 +39,11 @@ public class JwtTokenUtil {
      */
     private String generateToken(Map<String, Object> claims) {
         return Jwts.builder()
+                //配置数据
                 .setClaims(claims)
+                //配置过期时间
                 .setExpiration(generateExpirationDate())
+                //配置算法和密钥
                 .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
     }
@@ -57,7 +59,7 @@ public class JwtTokenUtil {
                     .parseClaimsJws(token)
                     .getBody();
         } catch (Exception e) {
-            LOGGER.info("JWT格式验证失败:{}",token);
+            LOGGER.info("JWT格式验证失败:{}", token);
         }
         return claims;
     }
@@ -76,7 +78,8 @@ public class JwtTokenUtil {
         String username;
         try {
             Claims claims = getClaimsFromToken(token);
-            username =  claims.getSubject();
+            //获取主题，这里是用户名，因为之前存进去的就是用户名
+            username = claims.getSubject();
         } catch (Exception e) {
             username = null;
         }

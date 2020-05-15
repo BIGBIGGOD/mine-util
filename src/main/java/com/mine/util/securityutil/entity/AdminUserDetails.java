@@ -8,18 +8,22 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.mine.model.ManageUserDo;
+import com.mine.model.UserPermissionDo;
+import lombok.Data;
+
 /**
- * SpringSecurity需要的用户详情
+ * Spring Security需要的用户详情
  *
  * @author macro
  * @date 2018/4/26
  */
 public class AdminUserDetails implements UserDetails {
-    private SecurityUser umsAdmin;
-    private List<UmsPermission> permissionList;
+    private ManageUserDo manageUserDo;
+    private List<UserPermissionDo> permissionList;
 
-    public AdminUserDetails(SecurityUser umsAdmin, List<UmsPermission> permissionList) {
-        this.umsAdmin = umsAdmin;
+    public AdminUserDetails(ManageUserDo manageUserDo, List<UserPermissionDo> permissionList) {
+        this.manageUserDo = manageUserDo;
         this.permissionList = permissionList;
     }
 
@@ -34,12 +38,12 @@ public class AdminUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return umsAdmin.getPassword();
+        return manageUserDo.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return umsAdmin.getUsername();
+        return manageUserDo.getUsername();
     }
 
     @Override
@@ -59,6 +63,6 @@ public class AdminUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return umsAdmin.getStatus().equals(1);
+        return manageUserDo.getStatus().equals(1);
     }
 }

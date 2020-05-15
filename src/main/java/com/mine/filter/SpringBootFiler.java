@@ -17,7 +17,7 @@ public class SpringBootFiler implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-
+        System.out.println("SpringBootFiler过滤器");
     }
 
     @Override

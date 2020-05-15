@@ -4,14 +4,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 用户登录参数
+ * 用户注册参数
  *
  * @author macro
  * @date 2018/4/26
  */
 @Getter
 @Setter
-public class SecurityUserParam {
+public class SecurityUserRegisterParam {
     /**
      * 用户名
      */

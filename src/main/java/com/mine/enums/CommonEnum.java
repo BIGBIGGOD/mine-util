@@ -16,8 +16,10 @@ public enum CommonEnum {
     SYSTEM_ERROR(-4, "系统错误"),
     OPERATE_DB_FAIL(-5, "数据库操作失败"),
     UNKNOWN(-6, "未知错误"),
-    INTERFAC_EERROR(-7, "调用接口错误"),
-    DATA_NOT_EXISTS(-8, "数据不存在");
+    INTERFACE_EERROR(-7, "调用接口错误"),
+    DATA_NOT_EXISTS(-8, "数据不存在"),
+    OLD_PARAMS_ERR(-9, "旧密码错误")
+    ;
 
     private int code;
     private String message;

@@ -9,12 +9,17 @@ import lombok.Data;
 public class UserLoginLogDo implements Serializable {
     private Long id;
 
+    /**
+     * 关联用户主键id
+     */
     private Long userId;
 
     private String ip;
 
     private String address;
-
+    /**
+     * 浏览器登录类型
+     */
     private String userAgent;
 
     private Date createTime;

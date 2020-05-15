@@ -3,7 +3,7 @@ package com.mine.util.jsonUtil;
 import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.mine.BaseJunit4Test;
-import com.mine.model.User;
+import com.mine.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 

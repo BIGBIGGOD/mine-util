@@ -74,11 +74,14 @@
 <!--        <table tableName="t_user_role" domainObjectName="UserRoleDo">-->
 <!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
 <!--        </table>-->
-        <table tableName="t_user_role_permission_relation" domainObjectName="RolePermissionRelationDo">
-            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
-        </table>
+<!--        <table tableName="t_user_role_permission_relation" domainObjectName="RolePermissionRelationDo">-->
+<!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+<!--        </table>-->
 <!--        <table tableName="t_user_role_relation" domainObjectName="UserRoleRelationDo">-->
 <!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
 <!--        </table>-->
+        <table tableName="t_user_permission_relation" domainObjectName="UserPermissionRelationDo">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>
     </context>
 </generatorConfiguration>
