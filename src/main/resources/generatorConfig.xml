@@ -62,7 +62,19 @@
         <!--        <table tableName="t_user" domainObjectName="UserDo">-->
         <!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
         <!--        </table>-->
-        <table tableName="t_manage_user" domainObjectName="ManageUserDo">
+<!--        <table tableName="t_manage_user" domainObjectName="ManageUserDo">-->
+<!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="t_user_login_log" domainObjectName="UserLoginLogDo">-->
+<!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+<!--        </table>-->
+        <table tableName="t_user_permission" domainObjectName="UserPermissionDo">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>
+        <table tableName="t_user_role" domainObjectName="UserRoleDo">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>
+        <table tableName="t_user_role_permission_relation" domainObjectName="RolePermissionRelationDo">
             <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
         </table>
     </context>
