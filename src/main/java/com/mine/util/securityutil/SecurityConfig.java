@@ -36,6 +36,10 @@ import com.mine.util.securityutil.service.SecurityUserService;
  */
 @Configuration
 @EnableWebSecurity
+/**
+ * Spring Security默认是禁用注解的，要想开启注解，需要在继承WebSecurityConfigurerAdapter的类上加@EnableGlobalMethodSecurity注解，
+ * 并在该类中将AuthenticationManager定义为Bean
+ */
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
@@ -45,6 +49,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private SecurityUserService securityUserService;
 
+    /**
+     * 设置URL相关的权限
+     * @param httpSecurity
+     * @throws Exception
+     */
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf()// 由于使用的是JWT，我们这里不需要csrf
@@ -88,6 +97,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(restAuthenticationEntryPoint);
     }
 
+    /**
+     * 设置userDetailService和加密方式
+     * @param auth
+     * @throws Exception
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService())
