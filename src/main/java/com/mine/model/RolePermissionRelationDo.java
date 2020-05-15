@@ -7,7 +7,9 @@ public class RolePermissionRelationDo implements Serializable {
 
     private Long roleId;
 
-    private Long userId;
+    private Long permissionId;
+
+    private Integer type;
 
     private static final long serialVersionUID = 1L;
 
@@ -27,11 +29,19 @@ public class RolePermissionRelationDo implements Serializable {
         this.roleId = roleId;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getPermissionId() {
+        return permissionId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setPermissionId(Long permissionId) {
+        this.permissionId = permissionId;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 }
