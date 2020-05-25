@@ -24,9 +24,13 @@ public class GlobalExceptionHandler extends BaseController {
 
     @ExceptionHandler(value = Exception.class)
     public Result defaultErrorHandler(Exception e, HttpServletRequest request) {
-        log.info("请求地址url={},异常信息：", request.getRequestURL(), e);
 //        ModelAndView mav = new ModelAndView();
 //        mav.setViewName(DEFAULT_ERROR_VIEW);
+        if (e instanceof BasesException) {
+            log.warn("请求报错，地址url={},异常信息:{}", request.getRequestURL(), e.getMessage());
+            return failResponse(((BasesException) e).getCode(), e.getMessage());
+        }
+        log.error("请求地址url={},异常信息：", request.getRequestURL(), e);
         return failResponse(CommonEnum.FAILURE.getCode(), CommonEnum.FAILURE.getMessage());
     }
 }

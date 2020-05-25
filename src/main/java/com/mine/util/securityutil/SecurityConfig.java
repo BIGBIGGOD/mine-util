@@ -61,10 +61,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement()// 基于token，所以不需要session
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
+                //authorizeRequests()配置路径拦截，表明路径访问所对应的权限，角色，认证信息。
+                //formLogin()对应表单认证相关的配置
+                //logout()对应了注销相关的配置
+                //httpBasic()可以配置basic登录
                 .authorizeRequests()
                 // 允许对于网站静态资源的无授权访问
                 .antMatchers(HttpMethod.GET,
-                        "/",
+                        "/999",
                         "/*.html",
                         "/favicon.ico",
                         "/**/*.html",
@@ -76,7 +80,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 )
                 .permitAll()
                 // 对登录注册要允许匿名访问
-                .antMatchers("/admin/login", "/admin/register")
+                .antMatchers("/user/login", "/user/register")
                 .permitAll()
                 //跨域请求会先进行一次options请求
                 .antMatchers(HttpMethod.OPTIONS)

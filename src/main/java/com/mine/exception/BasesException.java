@@ -1,6 +1,6 @@
 package com.mine.exception;
 
-import lombok.AllArgsConstructor;
+import com.mine.enums.CommonEnum;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,8 +11,7 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-public class BasesException extends RuntimeException{
+public class BasesException extends RuntimeException {
 
     /**
      * http错误状态码
@@ -24,4 +23,21 @@ public class BasesException extends RuntimeException{
      */
     private String message;
 
+    public BasesException(int code, String message) {
+        super(message);
+        this.code = code;
+        this.message = message;
+    }
+
+    public BasesException(int code, String message, Throwable cause) {
+        super(cause);
+        this.code = code;
+        this.message = message;
+    }
+
+    public BasesException(CommonEnum commonEnum) {
+        super(commonEnum.getMessage());
+        this.code = commonEnum.getCode();
+        this.message = commonEnum.getMessage();
+    }
 }

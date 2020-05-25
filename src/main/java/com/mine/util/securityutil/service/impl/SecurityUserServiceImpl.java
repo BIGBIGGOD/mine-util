@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,11 +24,13 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.github.pagehelper.PageHelper;
 import com.google.common.collect.Lists;
+import com.mine.enums.CommonEnum;
 import com.mine.mapper.*;
 import com.mine.model.*;
 import com.mine.util.securityutil.JwtTokenUtil;
 import com.mine.util.securityutil.entity.SecurityUserRegisterParam;
 import com.mine.util.securityutil.entity.UpdateUserPasswordParam;
+import com.mine.util.securityutil.exception.SecurityHandleException;
 import com.mine.util.securityutil.service.SecurityUserService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -81,7 +82,7 @@ public class SecurityUserServiceImpl implements SecurityUserService {
         example.createCriteria().andUsernameEqualTo(manageUserDo.getUsername());
         List<ManageUserDo> manageUserDoList = manageUserDoMapper.selectByExample(example);
         if (manageUserDoList.size() > 0) {
-            return null;
+            throw new SecurityHandleException(CommonEnum.EXIST_USERNAME);
         }
         //将密码进行加密存储
         String encodePassword = passwordEncoder.encode(manageUserDo.getPassword());
@@ -99,7 +100,7 @@ public class SecurityUserServiceImpl implements SecurityUserService {
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
             //比较用户密码
             if (!passwordEncoder.matches(password, userDetails.getPassword())) {
-                throw new BadCredentialsException("密码不正确");
+                throw new SecurityHandleException(CommonEnum.ERROR_PWD);
             }
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);

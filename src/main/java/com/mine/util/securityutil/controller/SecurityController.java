@@ -60,7 +60,7 @@ public class SecurityController extends BaseController {
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
-    public Result register(@RequestBody SecurityUserRegisterParam securityAdminParam, BindingResult result) {
+    public Result register( SecurityUserRegisterParam securityAdminParam, BindingResult result) {
         // umsAdminParam是业务实体类，umsAdmin是db层实体类其中密码是加密之后的
         ManageUserDo manageUserDo = securityUserService.register(securityAdminParam);
         if (manageUserDo == null) {
@@ -77,7 +77,7 @@ public class SecurityController extends BaseController {
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public Result login(@RequestBody SecurityUserLoginParam securityUserLoginParam) {
+    public Result login(SecurityUserLoginParam securityUserLoginParam) {
         String token = securityUserService.login(securityUserLoginParam.getUsername(), securityUserLoginParam.getPassword());
         if (token == null) {
             return failResponse(CommonEnum.FAILURE);

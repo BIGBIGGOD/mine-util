@@ -21,28 +21,28 @@
     <mvc:annotation-driven/>
 
     <!-- 接续多视图   -->
-    <!-- 视图 适配器:json,rss -->
-    <bean class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean" id="viewResolver">
-        <property name="ignoreAcceptHeader" value="true"></property>
-        <property name="favorPathExtension" value="false"></property>
-        <property name="favorParameter" value="true"></property>
-        <property name="parameterName" value="format"></property>
-        <property name="defaultContentType" value="text/html"></property>
-        <property name="mediaTypes">
-            <map>
-                <entry key="html" value="text/html"></entry>
-                <entry key="xml" value="application/xml"></entry>
-                <entry key="json" value="application/json"></entry>
-                <entry key="rss" value="application/rss+xml"></entry>
-            </map>
-            <!--<value>-->
-            <!--html=text/html-->
-            <!--xml=application/xml-->
-            <!--json=application/json-->
-            <!--rss=application/rss+xml-->
-            <!--</value>-->
-        </property>
-    </bean>
+    <!-- 视图 适配器:json,rss，使用security的时候会冲突，因为同一个bean创建了两个 -->
+<!--    <bean class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean" id="viewResolver">-->
+<!--        <property name="ignoreAcceptHeader" value="true"></property>-->
+<!--        <property name="favorPathExtension" value="false"></property>-->
+<!--        <property name="favorParameter" value="true"></property>-->
+<!--        <property name="parameterName" value="format"></property>-->
+<!--        <property name="defaultContentType" value="text/html"></property>-->
+<!--        <property name="mediaTypes">-->
+<!--            <map>-->
+<!--                <entry key="html" value="text/html"></entry>-->
+<!--                <entry key="xml" value="application/xml"></entry>-->
+<!--                <entry key="json" value="application/json"></entry>-->
+<!--                <entry key="rss" value="application/rss+xml"></entry>-->
+<!--            </map>-->
+<!--            &lt;!&ndash;<value>&ndash;&gt;-->
+<!--            &lt;!&ndash;html=text/html&ndash;&gt;-->
+<!--            &lt;!&ndash;xml=application/xml&ndash;&gt;-->
+<!--            &lt;!&ndash;json=application/json&ndash;&gt;-->
+<!--            &lt;!&ndash;rss=application/rss+xml&ndash;&gt;-->
+<!--            &lt;!&ndash;</value>&ndash;&gt;-->
+<!--        </property>-->
+<!--    </bean>-->
 
     <!-- 视图 适配器:jsp -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

@@ -18,7 +18,10 @@ public enum CommonEnum {
     UNKNOWN(-6, "未知错误"),
     INTERFACE_EERROR(-7, "调用接口错误"),
     DATA_NOT_EXISTS(-8, "数据不存在"),
-    OLD_PARAMS_ERR(-9, "旧密码错误")
+    OLD_PARAMS_ERR(-9, "旧密码错误"),
+    INTERFAC_EERROR(-10, "httpClient请求错误"),
+    EXIST_USERNAME(-10, "用户名已存在"),
+    ERROR_PWD(-10, "密码不正确"),
     ;
 
     private int code;
