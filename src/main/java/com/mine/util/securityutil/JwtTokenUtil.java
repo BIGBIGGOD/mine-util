@@ -44,7 +44,7 @@ public class JwtTokenUtil {
                 .setClaims(claims)
                 //配置过期时间
                 .setExpiration(generateExpirationDate())
-                //配置算法和密钥
+                //配置算法和密钥,当密钥长度太短的时候会导致加密报空错误
                 .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
     }
