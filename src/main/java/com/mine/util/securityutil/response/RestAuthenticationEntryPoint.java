@@ -22,7 +22,7 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
-        response.getWriter().println("构造一个异常枚举返回给前台");
+        response.getWriter().println("构造一个未登录异常枚举返回给前台");
         response.getWriter().flush();
     }
 }

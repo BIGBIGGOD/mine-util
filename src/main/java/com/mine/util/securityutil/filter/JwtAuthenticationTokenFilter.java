@@ -10,16 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.google.common.collect.Maps;
 import com.mine.util.securityutil.JwtTokenUtil;
+import com.mine.util.securityutil.config.SecurityParams;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.json.JSONObject;
 
@@ -30,36 +31,32 @@ import net.sf.json.JSONObject;
  * @date 2018/4/26
  */
 @Slf4j
+@Component
+//@WebFilter(filterName = "jwtAuthenticationTokenFilter", urlPatterns = {"/*"})
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     @Autowired
     private UserDetailsService userDetailsService;
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
-        @Value("${jwt.tokenHeader}")
-    private String tokenHeader = "Authorization";
-        @Value("${jwt.tokenHead}")
-    private String tokenHead = "Bearer";
+    @Autowired
+    private SecurityParams securityParams;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain chain) throws ServletException, IOException {
+        log.info("进入jwt过滤器,请求路径={}", request.getRequestURI());
         //获取指定请求头的内容
-        String authHeader = request.getHeader(this.tokenHeader);
+        String authHeader = request.getHeader(securityParams.getTokenHeader());
         //检验指定请求头内容是否为null且以指定的前缀开头
-        if (authHeader != null && authHeader.startsWith(this.tokenHead)) {
+        if (authHeader != null && authHeader.startsWith(securityParams.getTokenHead())) {
             // 截取除该前缀意外的内容,该内容为jwt生成的token
-            String authToken = authHeader.substring(this.tokenHead.length());
-            // jwt解析token获取属性
+            String authToken = authHeader.substring(securityParams.getTokenHead().length());
+            // jwt解析token获取username,当其为空时略过加载spring security context，当在其他步骤中需要登录验证时候会报未登录或者没有权限等异常
             String username = jwtTokenUtil.getUserNameFromToken(authToken);
             log.info("checking username:{}", username);
-            //判断用户名称为空
-            if (username == null) {
-                failResponse(response, -1, "登录错误");
-                return;
-            }
             // 判断用户名称和Security上下文是否为空，上下文为空时则需要判断是否重新授权
-            if (SecurityContextHolder.getContext().getAuthentication() == null) {
+            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 //在security中根据用户名称
                 UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
                 // 根据jwt的token、security的用户信息验证token是否过期

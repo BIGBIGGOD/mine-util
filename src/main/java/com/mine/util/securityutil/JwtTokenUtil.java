@@ -6,10 +6,12 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import com.mine.util.securityutil.config.SecurityParams;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -30,10 +32,9 @@ public class JwtTokenUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(JwtTokenUtil.class);
     private static final String CLAIM_KEY_USERNAME = "sub";
     private static final String CLAIM_KEY_CREATED = "created";
-        @Value("${jwt.secret}")
-    private String secret = "df";
-        @Value("${jwt.expiration}")
-    private Long expiration = 21L;
+
+    @Autowired
+    private SecurityParams securityParams;
 
     /**
      * 根据负责生成JWT的token
@@ -45,7 +46,7 @@ public class JwtTokenUtil {
                 //配置过期时间
                 .setExpiration(generateExpirationDate())
                 //配置算法和密钥,当密钥长度太短的时候会导致加密报空错误
-                .signWith(SignatureAlgorithm.HS512, secret)
+                .signWith(SignatureAlgorithm.HS512, securityParams.getSecret())
                 .compact();
     }
 
@@ -56,7 +57,7 @@ public class JwtTokenUtil {
         Claims claims = null;
         try {
             claims = Jwts.parser()
-                    .setSigningKey(secret)
+                    .setSigningKey(securityParams.getSecret())
                     .parseClaimsJws(token)
                     .getBody();
         } catch (Exception e) {
@@ -69,7 +70,7 @@ public class JwtTokenUtil {
      * 生成token的过期时间
      */
     private Date generateExpirationDate() {
-        return new Date(System.currentTimeMillis() + expiration * 1000);
+        return new Date(System.currentTimeMillis() + securityParams.getExpiration() * 1000);
     }
 
     /**
