@@ -110,7 +110,7 @@ public class SecurityController extends BaseController {
     public Result getUserInfo(Principal principal) {
         String username = principal.getName();
         ManageUserDo manageUserDo = securityUserService.getUserByUsername(username);
-        Map<String, Object> data = new HashMap<>();
+        Map<String, Object> data = Maps.newHashMap();
         data.put("username", manageUserDo.getUsername());
         data.put("roles", new String[]{"TEST"});
         data.put("icon", manageUserDo.getIcon());
@@ -118,7 +118,7 @@ public class SecurityController extends BaseController {
     }
 
     /**
-     * TODO 登出功能
+     *  登出功能
      */
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
     public Result logout() {

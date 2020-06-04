@@ -1,34 +1,33 @@
 package com.mine.redis;
 
+import java.io.Serializable;
+import java.util.concurrent.Callable;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.Cache;
 import org.springframework.cache.support.SimpleValueWrapper;
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
-import java.io.Serializable;
-import java.util.concurrent.Callable;
-
 import com.mine.util.javaSerializeUtil.JavaSerializeUtil;
 
 /**
  * 缓存注解使用
+ *
  * @author admin
  */
 @Repository
-public class RedisCache implements Cache{
+public class RedisCache implements Cache {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RedisCache.class);
 
     /**
      * 过期时间
      */
-    private static final int TIME_OUNT = 60*60*24;
+    private static final int TIME_OUT = 60 * 60 * 24;
 
     /**
      * redis模板
@@ -52,68 +51,53 @@ public class RedisCache implements Cache{
 
     @Override
     public ValueWrapper get(Object key) {
-        LOGGER.info("redis get cache key={}",key);
-        final String keyInfo =  key.toString();
-        Object object = null;
-        object = redisTemplate.execute(new RedisCallback<Object>() {
-            @Override
-            public Object doInRedis(RedisConnection connection)
-                    throws DataAccessException {
-                try {
-                    byte[] key = keyInfo.getBytes();
-                    byte[] value = connection.get(key);
-                    if (value == null) {
-                        return null;
-                    }
-                    return toObject(value);
-                }catch (Exception e){
-                    LOGGER.error("获取缓存失败",e);
+        LOGGER.info("redis get cache key={}", key);
+        final String keyInfo = key.toString();
+        Object object;
+        object = redisTemplate.execute((RedisCallback<Object>) connection -> {
+            try {
+                byte[] key1 = keyInfo.getBytes();
+                byte[] value = connection.get(key1);
+                if (value == null) {
+                    return null;
                 }
-                return null;
+                return toObject(value);
+            } catch (Exception e) {
+                LOGGER.error("获取缓存失败", e);
             }
+            return null;
         });
         return (object != null ? new SimpleValueWrapper(object) : null);
     }
 
     @Override
     public void put(final Object key, final Object value) {
-        LOGGER.info("redis put cache key={}",key);
+        LOGGER.info("redis put cache key={}", key);
         final String keyf = key.toString();
-        final Object valuef = value;
-        redisTemplate.execute(new RedisCallback<Boolean>() {
-            @Override
-            public Boolean doInRedis(RedisConnection connection)
-                    throws DataAccessException {
-                try {
-                    byte[] keyb = keyf.getBytes();
-                    byte[] valueb = toByteArray(valuef);
-                    if(valueb == null){
-                        return false;
-                    }
-                    connection.set(keyb, valueb);
-                    if (TIME_OUNT > 0) {
-                        connection.expire(keyb, TIME_OUNT);
-                    }
-                    return true;
-                }catch (Exception e){
-                    LOGGER.error("写入缓存失败,key={},value={}",key,value,e);
+        redisTemplate.execute((RedisCallback<Boolean>) connection -> {
+            try {
+                byte[] keyb = keyf.getBytes();
+                byte[] valueb = toByteArray(value);
+                if (valueb == null) {
+                    return false;
                 }
-                return false;
+                connection.set(keyb, valueb);
+                if (TIME_OUT > 0) {
+                    connection.expire(keyb, TIME_OUT);
+                }
+                return true;
+            } catch (Exception e) {
+                LOGGER.error("写入缓存失败,key={},value={}", key, value, e);
             }
+            return false;
         });
     }
 
     @Override
     public void evict(Object key) {
-        LOGGER.info("redis delete cache key={}",key);
+        LOGGER.info("redis delete cache key={}", key);
         final String keyInfo = key.toString();
-        redisTemplate.execute(new RedisCallback<Long>() {
-            @Override
-            public Long doInRedis(RedisConnection connection)
-                    throws DataAccessException {
-                return connection.del(keyInfo.getBytes());
-            }
-        });
+        redisTemplate.execute((RedisCallback<Long>) connection -> connection.del(keyInfo.getBytes()));
     }
 
     @Override
@@ -126,29 +110,25 @@ public class RedisCache implements Cache{
             return null;
         } else {
             final String finalKey;
-            final Class<T> finalType = type;
             if (key instanceof String) {
                 finalKey = (String) key;
             } else {
                 finalKey = key.toString();
             }
-            final Object object = redisTemplate.execute(new RedisCallback<Object>() {
-                @Override
-                public Object doInRedis(RedisConnection connection) throws DataAccessException {
-                    try {
-                        byte[] key = finalKey.getBytes();
-                        byte[] value = connection.get(key);
-                        if (value == null) {
-                            return null;
-                        }
-                        return toObject(value);
-                    }catch (Exception e){
-                        LOGGER.error("获取缓存异常,key={}",key,e);
+            final Object object = redisTemplate.execute((RedisCallback<Object>) connection -> {
+                try {
+                    byte[] key1 = finalKey.getBytes();
+                    byte[] value = connection.get(key1);
+                    if (value == null) {
+                        return null;
                     }
-                    return  null;
+                    return toObject(value);
+                } catch (Exception e) {
+                    LOGGER.error("获取缓存异常,key={}", key, e);
                 }
+                return null;
             });
-            if (finalType != null && finalType.isInstance(object) && null != object) {
+            if (type.isInstance(object)) {
                 return (T) object;
             } else {
                 return null;
@@ -164,8 +144,8 @@ public class RedisCache implements Cache{
     @Override
     public ValueWrapper putIfAbsent(Object key, Object value) {
         ValueWrapper valueWrapper = get(key);
-        if(valueWrapper == null){
-            put(key,value);
+        if (valueWrapper == null) {
+            put(key, value);
         }
         return get(key);
     }
@@ -197,19 +177,17 @@ public class RedisCache implements Cache{
     }
 
     private byte[] toByteArray(Object obj) throws Exception {
-        if(obj == null){
+        if (obj == null) {
             return null;
         }
-        if(obj instanceof Serializable){
+        if (obj instanceof Serializable) {
             Serializable serializableObj = (Serializable) obj;
-            return  JavaSerializeUtil.serialize(serializableObj);
+            return JavaSerializeUtil.serialize(serializableObj);
         }
         throw new Exception("没有实现序列化接口");
     }
 
     private Object toObject(byte[] bytes) throws Exception {
-        Serializable serializableObj = JavaSerializeUtil.unserialize(bytes);
-        return serializableObj;
+        return JavaSerializeUtil.unserialize(bytes);
     }
-
 }

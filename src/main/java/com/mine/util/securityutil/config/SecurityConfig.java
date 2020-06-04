@@ -84,7 +84,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 // 对登录注册要允许匿名访问
                 .antMatchers("/user/login", "/user/register")
-                .permitAll()
+                .permitAll();
                 //跨域请求会先进行一次options请求
 //                .antMatchers(HttpMethod.OPTIONS)
 //                .permitAll()
@@ -97,8 +97,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/user/test1")
 //                .authenticated();
                 // 除上面外的所有请求全部需要鉴权认证
-                .anyRequest()
-                .authenticated();
+//                .anyRequest()
+//                .authenticated();
         //formLogin()对应表单认证相关的配置
         //httpBasic()可以配置basic登录
         // 禁用缓存

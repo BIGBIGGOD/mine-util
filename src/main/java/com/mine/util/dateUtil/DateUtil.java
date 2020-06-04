@@ -107,6 +107,8 @@ public class DateUtil {
         Integer hour = calendar.get(Calendar.HOUR_OF_DAY);
         Integer minute = calendar.get(Calendar.MINUTE);
         Integer second = calendar.get(Calendar.SECOND);
+        //获取当月的天数
+        Integer dayOfMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         //分别设置年月日时分秒
         calendar.set(Calendar.YEAR, 1);
         //注意月份少一，以及周期是从星期天开始的
@@ -115,6 +117,10 @@ public class DateUtil {
         calendar.set(Calendar.HOUR_OF_DAY, 1);
         calendar.set(Calendar.MINUTE, 1);
         calendar.set(Calendar.SECOND, 1);
+        //设置并获取当月的上一月份
+        calendar.add(Calendar.MONTH, -1);
+        //设置为当月第一天
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
         //Calendar转换成Date类型
         Date newDate = calendar.getTime();
         //生成的时间
