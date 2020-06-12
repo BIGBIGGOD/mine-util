@@ -1,4 +1,4 @@
-package com.mine.util.algorithmUtil;
+package com.mine.util.algorithmutil;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
@@ -11,7 +11,7 @@ import com.mine.entity.User;
 /**
  * @author jiangqingdong
  * @version v1.0
- * @Description MurmurHash算法
+ * @Description MurmurHash算法:是一种非加密型哈希函数，适用于一般的哈希检索操作。高运算性能，低碰撞率
  * @DATE 2020/3/30 19:28
  * @Copyright Copyright © 2019 深圳花儿绽放网络科技股份有限公司. All rights reserved.
  */

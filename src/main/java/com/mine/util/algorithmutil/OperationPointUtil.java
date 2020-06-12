@@ -1,4 +1,4 @@
-package com.mine.util.algorithmUtil;
+package com.mine.util.algorithmutil;
 
 /**
  * @author jiangqingdong

@@ -1,4 +1,4 @@
-package com.mine.factoryBean;
+package com.mine.factorybean;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;

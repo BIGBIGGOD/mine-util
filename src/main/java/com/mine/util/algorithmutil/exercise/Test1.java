@@ -1,4 +1,4 @@
-package com.mine.util.algorithmUtil.exercise;
+package com.mine.util.algorithmutil.exercise;
 
 import java.util.LinkedList;
 

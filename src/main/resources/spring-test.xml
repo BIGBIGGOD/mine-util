@@ -29,7 +29,7 @@
     </bean>
 
     <!-- FactoryBean创建 -->
-    <bean class="com.mine.factoryBean.UserBeanFactory">
+    <bean class="com.mine.factorybean.UserBeanFactory">
         <property name="name" value="悟能"/>
     </bean>
 </beans>
