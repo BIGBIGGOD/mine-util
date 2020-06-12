@@ -112,6 +112,7 @@ public class AppConfig {
      * freemarker配置工厂类，注入模板路径,pom还未配置
      * @return
      */
+    //对应的方法名就是bean定义的默认beanName
     /*@Bean
     public FreeMarkerConfigurationFactoryBean freeMarkerConfigurationFactoryBean() {
         FreeMarkerConfigurationFactoryBean freeMarkerConfigurationFactoryBean = new FreeMarkerConfigurationFactoryBean();
