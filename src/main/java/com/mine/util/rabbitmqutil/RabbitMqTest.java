@@ -108,7 +108,7 @@ public class RabbitMqTest extends BaseJunit4Test {
 
     @Test
     public void test1() throws IOException, TimeoutException {
-        rabbitConsumer.topicConsumer(connectionFactory.newConnection().createChannel(), "test1");
+        rabbitConsumer.topicLimitConsumer(connectionFactory.newConnection().createChannel(), "test1");
     }
 
     @Test
@@ -119,5 +119,13 @@ public class RabbitMqTest extends BaseJunit4Test {
     @Test
     public void test3() throws IOException, TimeoutException {
         rabbitProducer.topicProducer(connectionFactory.newConnection().createChannel(), "xxx", "hello" + Math.random());
+    }
+
+    @Test
+    public void test4() throws IOException, TimeoutException {
+        Channel channel = connectionFactory.newConnection().createChannel();
+        for (int i = 0; i < 3; i++) {
+            rabbitProducer.topicProducer(channel, "xxx", "hello" + Math.random());
+        }
     }
 }

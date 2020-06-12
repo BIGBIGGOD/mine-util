@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.mine.util.rabbitmqutil.util.RabbitRetryUtil;
 import com.rabbitmq.client.*;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -165,7 +166,7 @@ public class RabbitConsumer {
     public void topicConsumer(Channel channel, String queueName) throws IOException {
 
         //路由器的名字
-        String exchangeName = "topic_exchange_name" + "@retry";
+        String exchangeName = "topic_exchange_name";
 
         //声明topic类型的路由器
         channel.exchangeDeclare(exchangeName, BuiltinExchangeType.TOPIC, false);
@@ -255,11 +256,65 @@ public class RabbitConsumer {
             }
         };
         while (true) {
-            channel.basicConsume(queueName, false, consumer);
-            channel.basicConsume(queueName + "@retry", false, consumer);
+            channel.basicConsume(queueName, true, consumer);
+            channel.basicConsume(queueName + "@retry", true, consumer);
         }
     }
 
-    //TODO 消息限流设置
+    /**
+     *  消息限流设置
+     * @param channel
+     * @param queueName
+     * @throws IOException
+     */
+    public void topicLimitConsumer(Channel channel, String queueName) throws IOException {
+
+        //路由器的名字
+        String exchangeName = "topic_exchange_name";
+
+        //声明topic类型的路由器
+        channel.exchangeDeclare(exchangeName, BuiltinExchangeType.TOPIC, false);
+
+        //定义队列名称
+        if (StringUtils.isBlank(queueName)) {
+            queueName = "topic_queue_name";
+        }
+        //声明要消费的队列,方法属性注释在生产者中有笔记
+        channel.queueDeclare(queueName, false, false, false, null);
+
+        //其他绑定参数,下面使用的队列绑定路由器没有用到该参数
+        Map<String, Object> arguments = null;
+
+        //路由键，即绑定键，在topic类型的路由器下，可以采用模糊匹配，如:test.*,这样就是收到所有所有路由键为test开头且后面只带一个单词的消息
+        String[] routingKeys = {"product.*", "*.info", "xxx"};
+
+        // 因为路由器类型是topic类型，所以可以把这个队列与路由器之间关联多个路由键，从而接受多种消息
+        for (String routingKey : routingKeys) {
+            //绑定队列到路由器上，将路由器、路由键、队列名关联起来，
+            channel.queueBind(queueName, exchangeName, routingKey);
+        }
+        // prefetchSize=0表示：消息大小是否限制（听说rabbitMQ没实现这个）
+        // prefetchCount=1表示：broker一次性推送给消费端消息个数不大于1
+        // global=true/false：表示限制是在channel上还是在consumer上（听说rabbitMQ没实现这个）
+        channel.basicQos(0, 1, true);
+        //开始监听消息
+        Consumer consumer = new DefaultConsumer(channel) {
+            @SneakyThrows
+            @Override
+            public void handleDelivery(String consumerTag,
+                                       Envelope envelope,
+                                       AMQP.BasicProperties properties,
+                                       byte[] body) {
+                String message = new String(body, StandardCharsets.UTF_8);
+                Thread.sleep(3000);
+                log.info("topicConsumer-->routingKey={}-->message={}", envelope.getRoutingKey(), message);
+                //设置为true则会确认收到消息，并在队列中删除该消息
+                channel.basicAck(envelope.getDeliveryTag(), true);
+            }
+        };
+        while (true) {
+            channel.basicConsume(queueName, false, consumer);
+        }
+    }
 
 }
