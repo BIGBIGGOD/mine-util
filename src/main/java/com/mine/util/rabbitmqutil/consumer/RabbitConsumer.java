@@ -262,7 +262,8 @@ public class RabbitConsumer {
     }
 
     /**
-     *  消息限流设置
+     * 消息限流设置
+     *
      * @param channel
      * @param queueName
      * @throws IOException
@@ -316,5 +317,4 @@ public class RabbitConsumer {
             channel.basicConsume(queueName, false, consumer);
         }
     }
-
 }
