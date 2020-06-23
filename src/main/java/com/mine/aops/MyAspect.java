@@ -20,7 +20,8 @@ import org.springframework.util.StopWatch;
 public class MyAspect {
 
     private final static char DOT_CHAR = '.';
-
+    //execution表示指定匹配类型方法，使用@表示匹配任何持有该注解的方法
+    //within表示匹配指定类型路径下的方法执行，也可以使用@表示匹配使用了指定注解的方法
     //可以使用环绕通知，第一个*表示类型（如public），..表示当前包及子包，第二个*表示类，.*(..)表示任何方法，括号内..表示任意参数
 //    @Around("execution(* com.mine..service.*.*(..))")
     @Around("execution(* com.mine..*.*(..))")
