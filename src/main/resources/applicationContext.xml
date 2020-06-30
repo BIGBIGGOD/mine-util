@@ -28,6 +28,9 @@
     <!--引进拦截器配置文件-->
     <import resource="classpath*:spring-intercept.xml"/>
 
+    <!--引入sharding-jdbc配置-->
+    <import resource="classpath*:sharding-jdbc.xml"/>
+
     <!-- 配置定时器 -->
     <task:annotation-driven scheduler="myScheduler"/>
     <task:scheduler id="myScheduler" pool-size="4"/>

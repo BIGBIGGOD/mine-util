@@ -21,6 +21,8 @@
         <slf4j.version>1.7.25</slf4j.version>
         <lombok.version>1.18.0</lombok.version>
         <druid.version>1.1.10</druid.version>
+        <sharding.version>2.0.3</sharding.version>
+        <dangdang.sharding.version>1.5.4.1</dangdang.sharding.version>
     </properties>
 
     <dependencies>
@@ -343,6 +345,38 @@
             <artifactId>amqp-client</artifactId>
             <version>5.9.0</version>
         </dependency>
+
+        <!-- sharding jdbc 依赖 -->
+<!--        <dependency>-->
+<!--            <groupId>io.shardingjdbc</groupId>-->
+<!--            <artifactId>sharding-jdbc-core</artifactId>-->
+<!--            <version>${sharding.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.shardingjdbc</groupId>-->
+<!--            <artifactId>sharding-jdbc-core-spring-namespace</artifactId>-->
+<!--            <version>${sharding.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.shardingjdbc</groupId>-->
+<!--            <artifactId>sharding-jdbc-core-spring</artifactId>-->
+<!--            <version>${sharding.version}</version>-->
+<!--            <type>pom</type>-->
+<!--        </dependency>-->
+
+        <!-- 当当的分库依赖包 -->
+        <dependency>
+            <groupId>com.dangdang</groupId>
+            <artifactId>sharding-jdbc-core</artifactId>
+            <version>${dangdang.sharding.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.dangdang</groupId>
+            <artifactId>sharding-jdbc-config-spring</artifactId>
+            <version>${dangdang.sharding.version}</version>
+        </dependency>
+
 
     </dependencies>
 
