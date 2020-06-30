@@ -41,8 +41,8 @@ public class AtomicClassUtil {
      */
     public static void method2() {
         String[] arr = new String[]{"sdfs", "df", "mxn./", "z@%@#"};
-        AtomicReferenceArray<String> atomicReferenceArray = new AtomicReferenceArray<String>(arr);
-        // 通基本类型一样，如果输入的值等于预期值，则以原子方式将该值设置为输入的值
+        AtomicReferenceArray<String> atomicReferenceArray = new AtomicReferenceArray<>(arr);
+        // 同基本类型一样，如果输入的值等于预期值，则以原子方式将该值设置为输入的值
         atomicReferenceArray.compareAndSet(0, "sdfs", "index0");
         // 获取指定下标位置的值
         System.out.println(atomicReferenceArray.get(0));

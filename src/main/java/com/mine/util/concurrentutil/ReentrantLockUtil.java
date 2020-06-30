@@ -25,18 +25,16 @@ public class ReentrantLockUtil {
     }
 
     class Widget {
-
         public synchronized void doSomething() {
             System.out.println("kkkk");
         }
     }
 
     class LoggingWidget extends Widget {
-
         @Override
         public synchronized void doSomething() {
             System.out.println("1111");
-            super.doSomething(); //这里需要再次获得自己的锁，如果锁不可重入将导致死锁
+            super.doSomething(); //这里调用父类的方法需要再次获得自己的锁，如果锁不可重入将导致死锁
         }
     }
 }

@@ -18,6 +18,7 @@ public class CallableUtil implements Callable<String> {
     }
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
+        //注意泛型的使用
         FutureTask<String> task = new FutureTask<>(new CallableUtil());
         new Thread(task).start();
         String res = task.get();
