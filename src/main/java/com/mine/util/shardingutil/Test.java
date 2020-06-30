@@ -56,5 +56,4 @@ public class Test {
         dataSource.setMaxWait(maxWait);
         return dataSource;
     }
-
 }
