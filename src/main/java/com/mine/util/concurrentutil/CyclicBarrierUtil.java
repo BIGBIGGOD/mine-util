@@ -6,8 +6,12 @@ import java.util.concurrent.CyclicBarrier;
 
 /**
  * CyclicBarrier控制其它线程的执行，以CyclicBarrier的parties为基准，当为0的时候还有其它线程等待执行则继续新一轮执行，否则结束
+ * 字面意思是“循环栅栏”，CyclicBarrier的parties会从0开始计数，每在子线程中使用一次cyc.await()就会加1，直到值等于初始化的值时，所有线程就会继续往下执行，否则线程会陷入等待中
  * 注意主线程一直在执行
- * Created by jiangqd on 2019/3/22.
+ * 内部通过维护parties以及采用重入锁ReentrantLock实现逻辑
+ *
+ * @author jiangqd
+ * @date 2019/3/22
  */
 public class CyclicBarrierUtil {
 
@@ -22,8 +26,9 @@ public class CyclicBarrierUtil {
                     try {
                         long time = new Random().nextInt(2001) + 1000;
                         Thread.sleep(time);
-                        System.out.println(Thread.currentThread().getName() + "通过了第" + j + "个障碍物，用时" + time + "s");
+                        System.out.println(Thread.currentThread().getName() + "到达了第" + j + "个障碍物，用时" + time + "ms");
                         cyc.await();
+                        System.out.println(Thread.currentThread().getName() + "通过了第" + j + "个障碍物，用时" + time + "ms");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (BrokenBarrierException e) {
@@ -51,9 +56,7 @@ public class CyclicBarrierUtil {
                     Thread.sleep(time);
                     System.out.println(Thread.currentThread().getName() + "通过了第" + i + "个障碍物，用时" + time + "s");
                     cyc.await();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (BrokenBarrierException e) {
+                } catch (InterruptedException | BrokenBarrierException e) {
                     e.printStackTrace();
                 }
             }

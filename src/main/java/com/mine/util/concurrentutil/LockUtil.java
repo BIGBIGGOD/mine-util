@@ -6,11 +6,13 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Lock的使用以及和synchornized的区别
+ * lock通过维护status以及链表和cas实现，lock是一个接口，比synchornized多一个可阻塞，以及返回获取锁结果
+ * synchornized直接通过底层c语言实现，更贴近硬件
  * Created by jiangqd on 2019/3/25.
  */
 public class LockUtil {
 
-    private Lock lock = new ReentrantLock();
+    private static Lock lock = new ReentrantLock();
 
     public static void main(String[] args) {
         LockUtil lockUtil = new LockUtil();
@@ -26,8 +28,8 @@ public class LockUtil {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }finally {
-            System.out.println("线程"+thread.getName()+"执行完释放锁");
             lock.unlock();
+            System.out.println("线程"+thread.getName()+"执行完释放锁");
         }
     }
 
@@ -43,8 +45,8 @@ public class LockUtil {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }finally {
-                System.out.println("线程"+thread.getName()+"执行完释放锁");
                 lock.unlock();
+                System.out.println("线程"+thread.getName()+"执行完释放锁");
             }
         }else {
             System.out.println("我是线程"+thread.getName()+",当前锁被占用，我无法获取");
@@ -63,8 +65,8 @@ public class LockUtil {
             } catch (Exception e) {
                 e.printStackTrace();
             }finally {
-                System.out.println("线程"+thread.getName()+"执行完释放锁");
                 lock.unlock();
+                System.out.println("线程"+thread.getName()+"执行完释放锁");
             }
         }else {
             System.out.println("我是线程"+thread.getName()+",当前锁被占用，我无法获取");

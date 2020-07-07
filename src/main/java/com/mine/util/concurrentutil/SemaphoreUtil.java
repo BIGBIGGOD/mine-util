@@ -11,7 +11,10 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Semaphore是一种计数信号量，是一种在多线程环境下使用的设施，该设施负责协调各个线程，以保证它们能够正确、合理的使用公共资源的设施,控制进程同步互斥的量。
- * Created by jiangqd on 2019/3/22.
+ * 通过计数新号量控制可运行进程数也就是控制资源利用
+ * 内部通过维护permits数量以及链表实现逻辑，和countdownLatch类似
+ * @author jiangqd
+ * @date 2019/3/22
  */
 @Slf4j
 public class SemaphoreUtil {

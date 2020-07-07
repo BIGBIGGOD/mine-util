@@ -7,6 +7,7 @@ import java.util.concurrent.CountDownLatch;
  * 使用concurrent包中的CounDowanLatch方法实现线程的管理
  * CountDownLatch利用减法计数，当最后为0的时候主线程才能继续往下执行，否则其它线程还会继续执行，而主线程阻塞中
  * 以英雄联盟游戏加载为例
+ * 内部通过维护一个status以及一个链表加上aqs实现逻辑
  * Created by jiangqd on 2019/3/22.
  */
 public class CountDownLatchUtil {

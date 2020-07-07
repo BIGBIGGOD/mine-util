@@ -17,13 +17,12 @@ public class DeadLockUtil {
             synchronized (dd1) {
                 //休眠
                 try {
-                    Thread.sleep(50);
+                    Thread.sleep(500);
                     synchronized (dd2) {
                         System.out.println(Thread.currentThread().getName() + "线程。。");
 //                        dd2.notify();
                     }
                 } catch (InterruptedException e) {
-                    //  Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -32,12 +31,11 @@ public class DeadLockUtil {
         Thread thread2 = new Thread(() -> {
             synchronized (dd2) {
                 try {
-//                    dd2.wait();
+                    dd2.wait();
                     synchronized (dd1) {
                         System.out.println(Thread.currentThread().getName() + "线程。。");
                     }
                 } catch (Exception e) {
-                    //  Auto-generated catch block
                     e.printStackTrace();
                 }
             }
