@@ -1,6 +1,9 @@
 package com.mine.util.javaSerializeUtil;
 
 import java.io.*;
+import java.time.Clock;
+
+import com.mine.entity.User;
 
 public class JavaSerializeUtil {
 
@@ -29,5 +32,15 @@ public class JavaSerializeUtil {
 		ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
 		ObjectInputStream ois = new ObjectInputStream(bais);
 		return (T)ois.readObject();
+	}
+
+	public static void main(String[] args) throws Exception {
+		User user = new User();
+		user.setName("xxx");
+		user.setAge(33);
+		user.setTime(Clock.systemDefaultZone().millis());
+		byte[] arr =serialize(user);
+		User user1 = unserialize(arr);
+
 	}
 }
