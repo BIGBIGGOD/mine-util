@@ -41,6 +41,6 @@ public class JavaSerializeUtil {
 		user.setTime(Clock.systemDefaultZone().millis());
 		byte[] arr =serialize(user);
 		User user1 = unserialize(arr);
-
+        System.out.println(user1);
 	}
 }
