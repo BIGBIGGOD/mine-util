@@ -1,13 +1,13 @@
 package com.mine.util.testUtil;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import lombok.Data;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import java.util.ArrayDeque;
+import java.util.Comparator;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentSkipListMap;
 
-import java.lang.reflect.Array;
-import java.util.*;
-import java.util.stream.Collectors;
+import com.mine.entity.User;
+import lombok.Data;
 
 /**
  * Created by jiangqd on 2019/3/16.
@@ -16,17 +16,22 @@ import java.util.stream.Collectors;
 public class Test1 {
 
     public static void main(String[] args) throws ClassNotFoundException {
-        //查看当前系统类路径中包含的路径条目
-        System.out.println("路径" + System.getProperty("java.class.path"));
-        //调用当前类的类加载器
-        Class typeLoaded = Class.forName("com.mine.util.testUtil.Test1");
-        //查看被加载的TestBean是被哪个类加载器加载的
-        System.out.println(typeLoaded.getClassLoader());
-//        String repeatTempleteText = "@[受邀者昵称]，你已经参与过该活动，不可重复助力快来生成海报，";
-//        repeatTempleteText =repeatTempleteText.replace("[受邀者昵称]", "悟空");
-//        System.out.println(repeatTempleteText);
-        ClassPathXmlApplicationContext c = new ClassPathXmlApplicationContext("");
-        c.getBean("");
+        ConcurrentHashMap<String, String> map = new ConcurrentHashMap<>();
+        map.put("ss", "xx");
+        map.get("ss");
+
+        ConcurrentSkipListMap<String, String> xxx = new ConcurrentSkipListMap<>();
+        xxx.put("xx", "xxsf");
+        xxx.get("xx");
+        System.out.println(xxx);
+
+        ConcurrentSkipListMap<User, String> aaa = new ConcurrentSkipListMap<>(new Comparator<User>() {
+            @Override
+            public int compare(User o1, User o2) {
+                return o1.getAge() - o2.getAge();
+            }
+        });
+
     }
 
 }

@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 /**
  * Created by jiangqd on 2019/3/11.
@@ -17,6 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 //加了XmlRootElement注释的实体类在mvc返回的时候会报存在相同属性存在多个的错误
 @XmlRootElement
+@Accessors(chain = true)
 public class User extends CommonResult {
 
     public String name;
