@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <typeAliases>
+        <!--单个配置别名-->
+        <!--<typeAlias alias="User" type="com.demo.entity.User"/>-->
+        <!--批量配置别名-->
+        <package name="com.mine.domain.model"/>
+    </typeAliases>
+
+    <plugins>
+        <!-- 分页插件 -->
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库-->
+            <property name="dialect" value="mysql"/>
+        </plugin>
+        <!-- SQL拦截插件 -->
+        <!--<plugin interceptor="com.weijuju.iag.common.mybatis.pagination.MySQLExcutorInterceptor" />-->
+    </plugins>
+
+</configuration>
