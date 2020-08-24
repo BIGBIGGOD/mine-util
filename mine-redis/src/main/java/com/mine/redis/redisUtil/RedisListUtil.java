@@ -1,4 +1,4 @@
-package com.mine.utils.redisUtil;
+package com.mine.redis.redisUtil;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

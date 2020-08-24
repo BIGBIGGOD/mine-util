@@ -1,5 +1,7 @@
 package com.mine.common.entity;
 
+import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 import lombok.AllArgsConstructor;
@@ -17,7 +19,7 @@ import lombok.experimental.Accessors;
 //加了XmlRootElement注释的实体类在mvc返回的时候会报存在相同属性存在多个的错误
 @XmlRootElement
 @Accessors(chain = true)
-public class User {
+public class User implements Serializable {
 
     public String name;
     private String pwd;

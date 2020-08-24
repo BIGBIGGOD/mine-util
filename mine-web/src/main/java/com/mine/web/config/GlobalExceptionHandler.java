@@ -1,15 +1,17 @@
 package com.mine.web.config;
 
+import java.nio.file.AccessDeniedException;
+
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.security.access.AccessDeniedException;
+//import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.mine.common.enums.CommonEnum;
 import com.mine.common.exception.BasesException;
-import com.mine.web.controller.BaseController;
+import com.mine.web.common.BaseController;
 import lombok.extern.slf4j.Slf4j;
 
 /**

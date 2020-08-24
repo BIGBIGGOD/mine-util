@@ -1,4 +1,4 @@
-package com.mine.utils.shardingutil;
+package com.mine.sharding;
 
 import org.apache.commons.lang3.StringUtils;
 

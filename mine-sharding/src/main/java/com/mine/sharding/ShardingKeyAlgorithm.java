@@ -1,4 +1,4 @@
-package com.mine.utils.shardingutil;
+package com.mine.sharding;
 
 import java.util.ArrayList;
 import java.util.Collection;

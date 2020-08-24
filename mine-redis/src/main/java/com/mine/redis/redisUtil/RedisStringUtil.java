@@ -1,4 +1,4 @@
-package com.mine.utils.redisUtil;
+package com.mine.redis.redisUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;

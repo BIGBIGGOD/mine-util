@@ -112,7 +112,7 @@ public class HttpClientUtil {
         HttpEntity entity = null;
         StringEntity stringEntity = new StringEntity(paramsJson, CHARSET);
 
-        CloseableHttpResponse response = null;
+            CloseableHttpResponse response = null;
         try {
             HttpUriRequest request = RequestBuilder.post()
                     .setUri(url)

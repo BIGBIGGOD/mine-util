@@ -1,4 +1,4 @@
-package com.mine.web.controller;
+package com.mine.web.common;
 
 import java.util.Map;
 

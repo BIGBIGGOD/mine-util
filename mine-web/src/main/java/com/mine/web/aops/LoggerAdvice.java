@@ -22,24 +22,24 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class LoggerAdvice {
 
-    @Before("within(com.mine..*) && @annotation(loggerManage)")
+    @Before("within(com.mine.web..*) && @annotation(loggerManage)")
     public void addBeforeLogger(JoinPoint joinPoint, LoggerManage loggerManage) {
         log.info("执行 {{}} 开始", loggerManage.description());
         log.info(joinPoint.getSignature().toString());
         log.info("参数={}", parseParames(joinPoint.getArgs()));
     }
 
-    @AfterReturning("within(com.mine..*) && @annotation(loggerManage)")
+    @AfterReturning("within(com.mine.web..*) && @annotation(loggerManage)")
     public void addAfterReturningLogger(JoinPoint joinPoint, LoggerManage loggerManage) {
         log.info("执行 {{}} 结束", loggerManage.description());
     }
 
-    @AfterThrowing(pointcut = "within(com.mine..*) && @annotation(loggerManage)", throwing = "ex")
+    @AfterThrowing(pointcut = "within(com.mine.web..*) && @annotation(loggerManage)", throwing = "ex")
     public void addAfterThrowingLogger(JoinPoint joinPoint, LoggerManage loggerManage, Exception ex) {
         log.error("执行 {{}} 异常", loggerManage.description(), ex);
     }
 
-    @Around("within(com.mine..*) && @annotation(loggerManage)")
+    @Around("within(com.mine.web..*) && @annotation(loggerManage)")
     public Object doAround(ProceedingJoinPoint joinPoint, LoggerManage loggerManage) throws Throwable {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();

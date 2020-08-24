@@ -1,7 +1,7 @@
 package com.mine.security.mapper;
 
-import com.mine.domain.model.UserLoginLogDo;
-import com.mine.domain.model.UserLoginLogDoExample;
+import com.mine.security.model.UserLoginLogDo;
+import com.mine.security.model.UserLoginLogDoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;

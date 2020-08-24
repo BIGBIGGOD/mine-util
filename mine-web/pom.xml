@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>mine-web</artifactId>
+    <packaging>war</packaging>
 
     <dependencies>
 
@@ -20,8 +21,20 @@
         </dependency>
 
         <dependency>
+            <groupId>com.mine</groupId>
+            <artifactId>mine-domain</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
         </dependency>
 
         <!-- 测试start -->
@@ -38,6 +51,92 @@
         </dependency>
         <!-- 测试end -->
 
+        <!-- 文件上传 -->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+        </dependency>
+
     </dependencies>
+
+    <build>
+        <!-- 引入idea插件 -->
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <!-- 跳过测试 -->
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <resources>
+            <resource>
+                <filtering>true</filtering>
+                <directory>src/main/resources/</directory>
+                <!--打包时先排除掉三个文件夹 -->
+                <excludes>
+                    <exclude>dev/*</exclude>
+                    <exclude>test/*</exclude>
+                    <exclude>product/*</exclude>
+                    <exclude>preprod/*</exclude>
+                </excludes>
+                <includes>
+                    <!--如果有其他定义通用文件，需要包含进来 -->
+                    <include>**/*</include>
+                </includes>
+            </resource>
+            <resource>
+                <!--这里是关键！ 根据不同的环境，把对应文件夹里的配置文件打包 -->
+                <directory>src/main/resources/${profiles.active}</directory>
+            </resource>
+        </resources>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profiles.active>dev</profiles.active>
+            </properties>
+            <!--activation用来指定激活方式，可以根据jdk环境，环境变量，文件的存在或缺失 -->
+            <activation>
+                <!--这个字段表示默认激活 -->
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+
+        <profile>
+            <id>test</id>
+            <properties>
+                <profiles.active>test</profiles.active>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>product</id>
+            <properties>
+                <profiles.active>product</profiles.active>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>producthttps</id>
+            <properties>
+                <profiles.active>producthttps</profiles.active>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>preprod</id>
+            <properties>
+                <profiles.active>preprod</profiles.active>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>

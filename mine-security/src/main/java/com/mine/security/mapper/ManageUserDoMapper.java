@@ -1,7 +1,7 @@
 package com.mine.security.mapper;
 
-import com.mine.domain.model.ManageUserDo;
-import com.mine.domain.model.ManageUserDoExample;
+import com.mine.security.model.ManageUserDoExample;
+import com.mine.security.model.ManageUserDo;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;

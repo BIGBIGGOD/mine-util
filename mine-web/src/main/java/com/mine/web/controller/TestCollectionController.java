@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.mine.common.entity.User;
+import com.mine.domain.service.TestService;
+import com.mine.web.aops.LoggerManage;
+import com.mine.web.common.BaseController;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -33,7 +36,7 @@ public class TestCollectionController extends BaseController {
     /**
      * 测试
      *
-     * @param json1
+     * @param json1 json
      */
     @RequestMapping(value = "test1", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     @ResponseBody
@@ -43,6 +46,6 @@ public class TestCollectionController extends BaseController {
         testService.test1();
         System.out.println(json1);
         return "你好啊";
-        
+
     }
 }

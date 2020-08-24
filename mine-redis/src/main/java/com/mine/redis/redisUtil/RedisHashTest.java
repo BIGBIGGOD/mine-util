@@ -1,9 +1,8 @@
-package com.mine.utils.redisUtil;
+package com.mine.redis.redisUtil;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.mine.common.BaseJunit4Test;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -13,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2019/1/12
  */
 @Slf4j
-public class RedisHashTest extends BaseJunit4Test {
+public class RedisHashTest {
 
     @Autowired
     private RedisHashUtil redisHashUtil;

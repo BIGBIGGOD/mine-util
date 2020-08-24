@@ -1,5 +1,5 @@
 
-package com.mine.utils.shardingutil;
+package com.mine.sharding;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
