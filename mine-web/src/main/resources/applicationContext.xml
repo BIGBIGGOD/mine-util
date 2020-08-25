@@ -17,7 +17,7 @@
     <context:property-placeholder location="classpath*:*.properties"/>
 
     <!--引进mybatis与spring整合文件-->
-<!--    <import resource="classpath*:mybatis-db.xml"/>-->
+    <import resource="classpath*:mybatis-db.xml"/>
 
     <!--引进sprinigmvc文件-->
     <import resource="classpath*:spring-mvc.xml"/>

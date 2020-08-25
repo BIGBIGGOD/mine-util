@@ -45,7 +45,7 @@ public class TestCollectionController extends BaseController {
         Preconditions.checkArgument(!Strings.isNullOrEmpty(json1), "参数错误");
         testService.test1();
         System.out.println(json1);
+        log.info(json1);
         return "你好啊";
-
     }
 }

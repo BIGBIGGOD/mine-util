@@ -1,7 +1,13 @@
 package com.mine.domain.service.impl;
 
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mine.domain.mapper.UserDoExtendMapper;
+import com.mine.domain.mapper.UserDoMapper;
+import com.mine.domain.model.UserDo;
 import com.mine.domain.service.TestService;
 
 
@@ -14,9 +20,19 @@ import com.mine.domain.service.TestService;
  */
 @Service
 public class TestServiceImpl implements TestService {
+
+    @Autowired
+    private UserDoMapper userDoMapper;
+    private UserDoExtendMapper userDoExtendMapper;
+
     @Override
     public void test1() {
-//        int a = 1/0;
+        UserDo userDo = new UserDo();
+        userDo.setName("快快快看");
+        userDoMapper.insert(userDo);
+
+        userDoExtendMapper.addUser(UUID.randomUUID().toString().replace("-", "").substring(6));
+
         System.out.println("你好啊，service！！");
     }
 }

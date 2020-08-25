@@ -29,7 +29,7 @@
 
         <!-- 连接测试环境数据库 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://106.52.169.187:3306/mine?useUnicode=true&amp;characterEncoding=UTF-8"
+                        connectionURL="jdbc:mysql://106.52.179.22:8020/mine?useUnicode=true&amp;characterEncoding=UTF-8"
                         userId="root" password="root">
         </jdbcConnection>
 
@@ -59,9 +59,9 @@
 
         <!-- 添加表和实体的映射<generatedKey column="id" sqlStatement="JDBC" identity="true"
             />，实体以DO结尾，表和表中的字段以下划线_分隔 -->
-        <!--        <table tableName="t_user" domainObjectName="UserDo">-->
-        <!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
-        <!--        </table>-->
+        <table tableName="t_user" domainObjectName="UserDo">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>
 <!--        <table tableName="t_manage_user" domainObjectName="ManageUserDo">-->
 <!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
 <!--        </table>-->
@@ -80,8 +80,8 @@
 <!--        <table tableName="t_user_role_relation" domainObjectName="UserRoleRelationDo">-->
 <!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
 <!--        </table>-->
-        <table tableName="t_user_permission_relation" domainObjectName="UserPermissionRelationDo">
-            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
-        </table>
+<!--        <table tableName="t_user_permission_relation" domainObjectName="UserPermissionRelationDo">-->
+<!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+<!--        </table>-->
     </context>
 </generatorConfiguration>

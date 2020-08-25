@@ -9,7 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
 /**
- * @author gaoxx gaoxx@fxiaoke.com
+ * @author Jqd
  * @ClassName: MyWebApplicationInitializer
  * @Description: 初始化web环境
  * @datetime 2019/1/2 13:13

@@ -33,7 +33,7 @@
             <list>
                 <!--/**的意思是所有文件夹及里面的子文件夹-->
                 <!--/*是所有文件夹，不含子文件夹-->
-                <value>classpath*:sqlmap/ManageUserDoMapper.xml</value>
+                <value>classpath*:sqlmap/**/*.xml</value>
             </list>
         </property>
     </bean>

@@ -2,6 +2,7 @@ package com.mine.common.exception;
 
 import com.mine.common.enums.CommonEnum;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
  * @Description 基础异常类
  * @Date 2019/1/15.
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 public class BasesException extends RuntimeException {
