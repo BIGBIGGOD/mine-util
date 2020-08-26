@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- classpath*：不仅包含class路径，还包括jar文件中(class路径)进行查找 -->
+    <context:property-placeholder location="classpath*:/dev/redis.properties"/>
 
     <!-- redis 配置 -->
     <bean id="coreRedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">

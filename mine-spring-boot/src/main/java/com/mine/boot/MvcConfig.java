@@ -1,4 +1,4 @@
-package com.mine.web.config;
+package com.mine.boot;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

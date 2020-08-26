@@ -28,7 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 @RequestMapping("/test")
-public class TestCollectionController extends BaseController {
+public class TestController extends BaseController {
 
     @Autowired
     private TestService testService;

@@ -1,4 +1,4 @@
-package com.mine.web.config.dispatch;
+package com.mine.boot.dispatch;
 
 /**
  * @Description: DispatcherServlet初始化类

@@ -1,4 +1,4 @@
-package com.mine.web.config;
+package com.mine.boot;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;

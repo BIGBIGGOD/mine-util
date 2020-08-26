@@ -1,4 +1,4 @@
-package com.mine.web.config.dispatch;
+package com.mine.boot.dispatch;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;

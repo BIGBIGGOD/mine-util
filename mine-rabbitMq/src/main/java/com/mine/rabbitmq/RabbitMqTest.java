@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.mine.rabbitmq.config.RabbitMqParams;
 import com.mine.rabbitmq.consumer.RabbitConsumer;
 import com.mine.rabbitmq.producer.RabbitProducer;
 import com.rabbitmq.client.*;
@@ -25,7 +26,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:applicationContext.xml"})
+@ContextConfiguration(locations = {"classpath:rabbitmq-context.xml"})
 public class RabbitMqTest {
 
     @Autowired
@@ -35,6 +36,8 @@ public class RabbitMqTest {
     private RabbitConsumer rabbitConsumer;
     @Autowired
     private RabbitProducer rabbitProducer;
+    @Autowired
+    private RabbitMqParams rabbitMqParams;
 
     @Test
     public void testGetBean() throws IOException, TimeoutException {
@@ -51,10 +54,10 @@ public class RabbitMqTest {
     @Test
     public void testProducer() throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setUsername("root");
-        factory.setPassword("root");
-        factory.setHost("106.52.169.187");
-        factory.setPort(5672);
+        factory.setUsername("guest");
+        factory.setPassword("guest");
+        factory.setHost("106.52.179.22");
+        factory.setPort(8040);
         //connection是socket连接的抽象，为我们处理了通信协议版本协商以及认证
         try (Connection conn = factory.newConnection();
              //创建了一个通道（channel），大部分的API操作均在这里完成
@@ -78,9 +81,10 @@ public class RabbitMqTest {
     @Test
     public void testConsumer() throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setUsername("root");
-        factory.setPassword("root");
-        factory.setHost("106.52.169.187");
+        factory.setUsername("guest");
+        factory.setPassword("guest");
+        factory.setHost("106.52.179.22");
+        factory.setPort(8040);
         try (Connection conn = factory.newConnection();
              Channel channel = conn.createChannel()) {
             String exchangeName = "test-exchange";

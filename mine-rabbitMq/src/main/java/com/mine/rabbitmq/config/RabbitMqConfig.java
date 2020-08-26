@@ -25,7 +25,7 @@ public class RabbitMqConfig {
         factory.setUsername(rabbitMqParams.getUsername());
         factory.setPassword(rabbitMqParams.getUsername());
         factory.setHost(rabbitMqParams.getHost());
-//        factory.setPort(rabbitMqParams.getPort());
+        factory.setPort(rabbitMqParams.getPort());
         return factory;
     }
 

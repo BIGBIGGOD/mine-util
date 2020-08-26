@@ -3,6 +3,7 @@ package com.mine.redis.redisUtil;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.mine.redis.common.BaseRedisTest;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -12,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2019/1/12
  */
 @Slf4j
-public class RedisListTest {
+public class RedisListTest extends BaseRedisTest {
 
     @Autowired
     private RedisListUtil redisListUtil;

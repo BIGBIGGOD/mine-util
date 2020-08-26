@@ -16,13 +16,13 @@
         <module>mine-web</module>
         <module>mine-utils</module>
         <module>mine-domain</module>
-<!--        <module>mine-spring-boot</module>-->
-<!--        <module>mine-shiro</module>-->
-<!--        <module>mine-quarz</module>-->
+        <module>mine-spring-boot</module>
+        <module>mine-shiro</module>
+        <module>mine-quarz</module>
 <!--        <module>mine-security</module>-->
-<!--        <module>mine-redis</module>-->
-<!--        <module>mine-rabbitMq</module>-->
-<!--        <module>mine-sharding</module>-->
+        <module>mine-redis</module>
+        <module>mine-rabbitMq</module>
+        <module>mine-sharding</module>
     </modules>
 
     <properties>
@@ -442,6 +442,12 @@
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.8.0</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                        <debug>true</debug>
+                        <debuglevel>lines,vars,source</debuglevel>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>

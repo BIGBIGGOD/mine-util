@@ -28,6 +28,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.mine</groupId>
+            <artifactId>mine-redis</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
         </dependency>
@@ -36,20 +42,6 @@
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
         </dependency>
-
-        <!-- 测试start -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${springframework.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <!-- 测试end -->
 
         <!-- 文件上传 -->
         <dependency>
@@ -83,7 +75,6 @@
                     <exclude>dev/*</exclude>
                     <exclude>test/*</exclude>
                     <exclude>product/*</exclude>
-                    <exclude>preprod/*</exclude>
                 </excludes>
                 <includes>
                     <!--如果有其他定义通用文件，需要包含进来 -->
@@ -124,19 +115,6 @@
             </properties>
         </profile>
 
-        <profile>
-            <id>producthttps</id>
-            <properties>
-                <profiles.active>producthttps</profiles.active>
-            </properties>
-        </profile>
-
-        <profile>
-            <id>preprod</id>
-            <properties>
-                <profiles.active>preprod</profiles.active>
-            </properties>
-        </profile>
     </profiles>
 
 </project>

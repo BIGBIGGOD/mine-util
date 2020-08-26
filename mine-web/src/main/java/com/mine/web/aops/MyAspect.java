@@ -10,7 +10,10 @@ import org.aspectj.lang.annotation.Around;
 import org.springframework.util.StopWatch;
 
 /**
- * Created by jiangqd on 2019/1/12.
+ * @author jqd
+ * @version 1.0
+ * @Description: 接口参数
+ * @date 2016年7月6日  下午5:36:38
  */
 @Slf4j
 //@Component

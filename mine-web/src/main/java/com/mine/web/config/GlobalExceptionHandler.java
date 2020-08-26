@@ -28,8 +28,6 @@ public class GlobalExceptionHandler extends BaseController {
 
     @ExceptionHandler(value = Exception.class)
     public Result defaultErrorHandler(Exception e, HttpServletRequest request) {
-//        ModelAndView mav = new ModelAndView();
-//        mav.setViewName(DEFAULT_ERROR_VIEW);
         if (e instanceof BasesException) {
             log.warn("请求报错，地址url={},异常信息:{}", request.getRequestURL(), e.getMessage());
             return failResponse(((BasesException) e).getCode(), e.getMessage());
