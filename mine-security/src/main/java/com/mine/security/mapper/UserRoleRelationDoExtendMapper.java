@@ -6,10 +6,11 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import com.mine.domain.model.UserPermissionDo;
-import com.mine.domain.model.UserPermissionRelationDo;
-import com.mine.domain.model.UserRoleDo;
-import com.mine.domain.model.UserRoleRelationDo;
+import com.mine.security.model.UserPermissionDo;
+import com.mine.security.model.UserPermissionRelationDo;
+import com.mine.security.model.UserRoleDo;
+import com.mine.security.model.UserRoleRelationDo;
+
 
 @Repository
 public interface UserRoleRelationDoExtendMapper {

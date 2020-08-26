@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.mine.security.mapper.UserPermissionDoMapper" >
-  <resultMap id="BaseResultMap" type="com.mine.domain.model.UserPermissionDo" >
+  <resultMap id="BaseResultMap" type="com.mine.security.model.UserPermissionDo" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="pid" property="pid" jdbcType="BIGINT" />
     <result column="name" property="name" jdbcType="VARCHAR" />
@@ -10,7 +10,7 @@
     <result column="type" property="type" jdbcType="INTEGER" />
     <result column="uri" property="uri" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
-    <result column="create_time" property="createTime" jdbcType="DATE" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="sort" property="sort" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -74,7 +74,7 @@
   <sql id="Base_Column_List" >
     id, pid, name, value, icon, type, uri, status, create_time, sort
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mine.domain.model.UserPermissionDoExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mine.security.model.UserPermissionDoExample" >
     select
     <if test="distinct" >
       distinct
@@ -98,21 +98,21 @@
     delete from t_user_permission
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.mine.domain.model.UserPermissionDoExample" >
+  <delete id="deleteByExample" parameterType="com.mine.security.model.UserPermissionDoExample" >
     delete from t_user_permission
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.mine.domain.model.UserPermissionDo" useGeneratedKeys="true" keyProperty="id" >
+  <insert id="insert" parameterType="com.mine.security.model.UserPermissionDo" useGeneratedKeys="true" keyProperty="id" >
     insert into t_user_permission (pid, name, value, 
       icon, type, uri, status, 
       create_time, sort)
     values (#{pid,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, 
       #{icon,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{uri,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=DATE}, #{sort,jdbcType=INTEGER})
+      #{createTime,jdbcType=TIMESTAMP}, #{sort,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.mine.domain.model.UserPermissionDo" useGeneratedKeys="true" keyProperty="id" >
+  <insert id="insertSelective" parameterType="com.mine.security.model.UserPermissionDo" useGeneratedKeys="true" keyProperty="id" >
     insert into t_user_permission
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="pid != null" >
@@ -166,14 +166,14 @@
         #{status,jdbcType=INTEGER},
       </if>
       <if test="createTime != null" >
-        #{createTime,jdbcType=DATE},
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="sort != null" >
         #{sort,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.mine.domain.model.UserPermissionDoExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.mine.security.model.UserPermissionDoExample" resultType="java.lang.Integer" >
     select count(*) from t_user_permission
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -207,7 +207,7 @@
         status = #{record.status,jdbcType=INTEGER},
       </if>
       <if test="record.createTime != null" >
-        create_time = #{record.createTime,jdbcType=DATE},
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.sort != null" >
         sort = #{record.sort,jdbcType=INTEGER},
@@ -227,13 +227,13 @@
       type = #{record.type,jdbcType=INTEGER},
       uri = #{record.uri,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
-      create_time = #{record.createTime,jdbcType=DATE},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
       sort = #{record.sort,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mine.domain.model.UserPermissionDo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.mine.security.model.UserPermissionDo" >
     update t_user_permission
     <set >
       <if test="pid != null" >
@@ -258,7 +258,7 @@
         status = #{status,jdbcType=INTEGER},
       </if>
       <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=DATE},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="sort != null" >
         sort = #{sort,jdbcType=INTEGER},
@@ -266,7 +266,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.mine.domain.model.UserPermissionDo" >
+  <update id="updateByPrimaryKey" parameterType="com.mine.security.model.UserPermissionDo" >
     update t_user_permission
     set pid = #{pid,jdbcType=BIGINT},
       name = #{name,jdbcType=VARCHAR},
@@ -275,11 +275,11 @@
       type = #{type,jdbcType=INTEGER},
       uri = #{uri,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=DATE},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
       sort = #{sort,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <select resultMap="BaseResultMap" parameterType="com.mine.domain.model.UserPermissionDoExample" id="selectByExampleWithRowbounds" >
+  <select resultMap="BaseResultMap" parameterType="com.mine.security.model.UserPermissionDoExample" id="selectByExampleWithRowbounds" >
     select
     <if test="distinct" >
       distinct

@@ -1,7 +1,7 @@
 package com.mine.security.mapper;
 
-import com.mine.domain.model.UserRoleDo;
-import com.mine.domain.model.UserRoleDoExample;
+import com.mine.security.model.UserRoleDo;
+import com.mine.security.model.UserRoleDoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
@@ -11,7 +11,7 @@ public interface UserRoleDoMapper {
 
     int deleteByExample(UserRoleDoExample example);
 
-    int deleteByPrimaryKey(Long id);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(UserRoleDo record);
 
@@ -21,7 +21,7 @@ public interface UserRoleDoMapper {
 
     List<UserRoleDo> selectByExample(UserRoleDoExample example);
 
-    UserRoleDo selectByPrimaryKey(Long id);
+    UserRoleDo selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") UserRoleDo record, @Param("example") UserRoleDoExample example);
 

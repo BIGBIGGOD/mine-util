@@ -13,17 +13,16 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import com.google.common.collect.Maps;
-import com.mine.common.entity.User;
 import com.mine.common.enums.CommonEnum;
+import com.mine.security.common.BaseController;
 import com.mine.security.config.SecurityParams;
+import com.mine.security.entity.SecurityUser;
 import com.mine.security.entity.SecurityUserLoginParam;
 import com.mine.security.entity.SecurityUserRegisterParam;
 import com.mine.security.entity.UpdateUserPasswordParam;
+import com.mine.security.model.ManageUserDo;
+import com.mine.security.model.UserRoleDo;
 import com.mine.security.service.SecurityUserService;
-import com.mine.web.controller.BaseController;
-import com.mine.domain.model.ManageUserDo;
-import com.mine.domain.model.UserRoleDo;
-import com.mine.utils.shiroUtil.User;
 
 
 /**
@@ -45,10 +44,10 @@ public class SecurityController extends BaseController {
 
     @PreAuthorize("hasRole('权限1')")
     @RequestMapping(value = "test1")
-    public User test1(@RequestParam(value = "str") String str) {
-        User user = new User();
+    public SecurityUser test1(@RequestParam(value = "str") String str) {
+        SecurityUser user = new SecurityUser();
         user.setName("测试cshi");
-        user.setPassword(str);
+        user.setPwd(str);
         return user;
     }
 

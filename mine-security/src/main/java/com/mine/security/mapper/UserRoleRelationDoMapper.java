@@ -1,7 +1,7 @@
 package com.mine.security.mapper;
 
-import com.mine.domain.model.UserRoleRelationDo;
-import com.mine.domain.model.UserRoleRelationDoExample;
+import com.mine.security.model.UserRoleRelationDo;
+import com.mine.security.model.UserRoleRelationDoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;

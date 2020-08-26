@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.mine.security.mapper.RolePermissionRelationDoMapper" >
-  <resultMap id="BaseResultMap" type="com.mine.domain.model.RolePermissionRelationDo" >
+  <resultMap id="BaseResultMap" type="com.mine.security.model.RolePermissionRelationDo" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="role_id" property="roleId" jdbcType="BIGINT" />
     <result column="permission_id" property="permissionId" jdbcType="BIGINT" />
@@ -68,7 +68,7 @@
   <sql id="Base_Column_List" >
     id, role_id, permission_id, type
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mine.domain.model.RolePermissionRelationDoExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mine.security.model.RolePermissionRelationDoExample" >
     select
     <if test="distinct" >
       distinct
@@ -92,19 +92,19 @@
     delete from t_user_role_permission_relation
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.mine.domain.model.RolePermissionRelationDoExample" >
+  <delete id="deleteByExample" parameterType="com.mine.security.model.RolePermissionRelationDoExample" >
     delete from t_user_role_permission_relation
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.mine.domain.model.RolePermissionRelationDo" useGeneratedKeys="true" keyProperty="id" >
+  <insert id="insert" parameterType="com.mine.security.model.RolePermissionRelationDo" useGeneratedKeys="true" keyProperty="id" >
     insert into t_user_role_permission_relation (role_id, permission_id, type
       )
     values (#{roleId,jdbcType=BIGINT}, #{permissionId,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.mine.domain.model.RolePermissionRelationDo" useGeneratedKeys="true" keyProperty="id" >
+  <insert id="insertSelective" parameterType="com.mine.security.model.RolePermissionRelationDo" useGeneratedKeys="true" keyProperty="id" >
     insert into t_user_role_permission_relation
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="roleId != null" >
@@ -129,7 +129,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.mine.domain.model.RolePermissionRelationDoExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.mine.security.model.RolePermissionRelationDoExample" resultType="java.lang.Integer" >
     select count(*) from t_user_role_permission_relation
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -165,7 +165,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mine.domain.model.RolePermissionRelationDo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.mine.security.model.RolePermissionRelationDo" >
     update t_user_role_permission_relation
     <set >
       <if test="roleId != null" >
@@ -180,14 +180,14 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.mine.domain.model.RolePermissionRelationDo" >
+  <update id="updateByPrimaryKey" parameterType="com.mine.security.model.RolePermissionRelationDo" >
     update t_user_role_permission_relation
     set role_id = #{roleId,jdbcType=BIGINT},
       permission_id = #{permissionId,jdbcType=BIGINT},
       type = #{type,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <select resultMap="BaseResultMap" parameterType="com.mine.domain.model.RolePermissionRelationDoExample" id="selectByExampleWithRowbounds" >
+  <select resultMap="BaseResultMap" parameterType="com.mine.security.model.RolePermissionRelationDoExample" id="selectByExampleWithRowbounds" >
     select
     <if test="distinct" >
       distinct

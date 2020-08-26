@@ -8,8 +8,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.mine.domain.model.ManageUserDo;
-import com.mine.domain.model.UserPermissionDo;
+import com.mine.security.model.ManageUserDo;
+import com.mine.security.model.UserPermissionDo;
 
 /**
  * Spring Security需要的用户详情

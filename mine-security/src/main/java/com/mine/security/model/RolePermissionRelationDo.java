@@ -2,9 +2,6 @@ package com.mine.security.model;
 
 import java.io.Serializable;
 
-/**
- * @author Administrator
- */
 public class RolePermissionRelationDo implements Serializable {
     private Long id;
 

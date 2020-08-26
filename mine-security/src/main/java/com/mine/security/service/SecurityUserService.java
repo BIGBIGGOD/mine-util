@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mine.domain.model.ManageUserDo;
-import com.mine.domain.model.UserPermissionDo;
-import com.mine.domain.model.UserRoleDo;
-import com.mine.security.entity.UpdateUserPasswordParam;
 import com.mine.security.entity.SecurityUserRegisterParam;
+import com.mine.security.entity.UpdateUserPasswordParam;
+import com.mine.security.model.ManageUserDo;
+import com.mine.security.model.UserPermissionDo;
+import com.mine.security.model.UserRoleDo;
 
 /**
  * 后台管理员Service
@@ -43,7 +43,6 @@ public interface SecurityUserService {
      * @return res
      */
     String refreshToken(String oldToken);
-
 
 
     /**

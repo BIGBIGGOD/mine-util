@@ -19,7 +19,7 @@
         <module>mine-spring-boot</module>
         <module>mine-shiro</module>
         <module>mine-quarz</module>
-<!--        <module>mine-security</module>-->
+        <module>mine-security</module>
         <module>mine-redis</module>
         <module>mine-rabbitMq</module>
         <module>mine-sharding</module>

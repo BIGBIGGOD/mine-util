@@ -29,6 +29,19 @@
         </dependency>
         <!--security框架依赖end-->
 
+        <!--jwt依赖-->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+        </dependency>
+
     </dependencies>
 
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources/</directory>
+            </resource>
+        </resources>
+    </build>
 </project>

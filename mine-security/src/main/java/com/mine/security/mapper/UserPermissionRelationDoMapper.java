@@ -1,7 +1,7 @@
 package com.mine.security.mapper;
 
-import com.mine.domain.model.UserPermissionRelationDo;
-import com.mine.domain.model.UserPermissionRelationDoExample;
+import com.mine.security.model.UserPermissionRelationDo;
+import com.mine.security.model.UserPermissionRelationDoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;

@@ -39,7 +39,7 @@
 
         <!-- 根据工程修改targetPackage，工程目录中新建dataobject子目录 -->
         <javaModelGenerator
-                targetPackage="com.mine.domain.model"
+                targetPackage="com.mine.security.model"
                 targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
             <property name="trimStrings" value="true"/>
@@ -53,12 +53,33 @@
         <!-- 根据工程修改targetPackage，mapper下新建子目录 -->
         <!-- 这个模块不能改，不然扫描不到 -->
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.mine.domain.mapper" targetProject="src/main/java">
+                             targetPackage="com.mine.security.mapper" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
         <!-- 添加表和实体的映射<generatedKey column="id" sqlStatement="JDBC" identity="true"
             />，实体以DO结尾，表和表中的字段以下划线_分隔 -->
+<!--        <table tableName="t_manage_user" domainObjectName="ManageUserDo">-->
+<!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="t_user_login_log" domainObjectName="UserLoginLogDo">-->
+<!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="t_user_permission" domainObjectName="UserPermissionDo">-->
+<!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="t_user_role" domainObjectName="UserRoleDo">-->
+<!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="t_user_role_permission_relation" domainObjectName="RolePermissionRelationDo">-->
+<!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="t_user_role_relation" domainObjectName="UserRoleRelationDo">-->
+<!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="t_user_permission_relation" domainObjectName="UserPermissionRelationDo">-->
+<!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+<!--        </table>-->
         <table tableName="t_user" domainObjectName="UserDo">
             <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
         </table>

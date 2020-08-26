@@ -1,8 +1,7 @@
 package com.mine.security.mapper;
 
-import com.mine.security.model.ManageUserDoExample;
 import com.mine.security.model.ManageUserDo;
-
+import com.mine.security.model.ManageUserDoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;

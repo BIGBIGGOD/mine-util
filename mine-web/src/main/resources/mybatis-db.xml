@@ -44,7 +44,7 @@
 
     <bean id="mapperScannerConfig" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <property name="basePackage" value="com.mine.domain.mapper"/>
+        <property name="basePackage" value="com.mine.domain.mapper,com.mine.security.mapper"/>
     </bean>
 
     <!--支持事务注解-->

@@ -20,10 +20,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
 
-import com.mine.domain.model.ManageUserDo;
-import com.mine.domain.model.UserPermissionDo;
 import com.mine.security.entity.AdminUserDetails;
 import com.mine.security.filter.JwtAuthenticationTokenFilter;
+import com.mine.security.model.ManageUserDo;
+import com.mine.security.model.UserPermissionDo;
 import com.mine.security.response.RestAuthenticationEntryPoint;
 import com.mine.security.response.RestfulAccessDeniedHandler;
 import com.mine.security.service.SecurityUserService;

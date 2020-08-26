@@ -25,12 +25,12 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.github.pagehelper.PageHelper;
 import com.google.common.collect.Lists;
 import com.mine.common.enums.CommonEnum;
-import com.mine.domain.mapper.*;
-import com.mine.domain.model.*;
 import com.mine.security.JwtTokenUtil;
+import com.mine.security.entity.SecurityUserRegisterParam;
 import com.mine.security.entity.UpdateUserPasswordParam;
 import com.mine.security.exception.SecurityHandleException;
-import com.mine.security.entity.SecurityUserRegisterParam;
+import com.mine.security.mapper.*;
+import com.mine.security.model.*;
 import com.mine.security.service.SecurityUserService;
 import lombok.extern.slf4j.Slf4j;
 
