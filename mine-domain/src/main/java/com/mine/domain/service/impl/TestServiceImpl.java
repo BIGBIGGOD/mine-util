@@ -23,6 +23,7 @@ public class TestServiceImpl implements TestService {
 
     @Autowired
     private UserDoMapper userDoMapper;
+    @Autowired
     private UserDoExtendMapper userDoExtendMapper;
 
     @Override

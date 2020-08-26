@@ -9,7 +9,9 @@
     CommonAnnotationBeanPostProcessor以及PersistenceAnnotationBeanPostProcessor这4个BeanPostProcessor-->
     <context:annotation-config/>
     <!--配置扫描包路径-->
-    <context:component-scan base-package="com.mine"/>
+    <context:component-scan base-package="com.mine">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
 
     <!-- 数据库配置 -->
     <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource"
@@ -36,6 +38,8 @@
                 <value>classpath*:sqlmap/**/*.xml</value>
             </list>
         </property>
+        <!--扫描model包 xml中parameterType就可以使用类名，不用全路径-->
+        <property name="typeAliasesPackage" value="com.mine.domain.model"/>
     </bean>
 
     <bean id="mapperScannerConfig" class="org.mybatis.spring.mapper.MapperScannerConfigurer">

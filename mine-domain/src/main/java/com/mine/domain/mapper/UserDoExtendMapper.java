@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 /**
  * Created by jiangqd on 2019/1/12.
  */
-@Repository
+@Mapper
 public interface UserDoExtendMapper {
 
     @Select("select name from t_user")
