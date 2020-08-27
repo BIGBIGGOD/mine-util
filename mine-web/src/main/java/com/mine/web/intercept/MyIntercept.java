@@ -37,6 +37,7 @@ public class MyIntercept implements HandlerInterceptor {
 
         String token = request.getParameter("token");
         log.info("token={}", token);
+        log.info("uri={}", request.getServletPath());
         if (StringUtils.isBlank(token)) {
             return true;
         }

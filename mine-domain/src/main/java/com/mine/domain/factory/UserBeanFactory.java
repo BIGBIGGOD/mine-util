@@ -3,6 +3,7 @@ package com.mine.domain.factory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.core.ResolvableType;
 
 /**
@@ -46,6 +47,16 @@ public class UserBeanFactory implements BeanFactory {
 
     @Override
     public <T> T getBean(Class<T> aClass, Object... objects) throws BeansException {
+        return null;
+    }
+
+    @Override
+    public <T> ObjectProvider<T> getBeanProvider(Class<T> requiredType) {
+        return null;
+    }
+
+    @Override
+    public <T> ObjectProvider<T> getBeanProvider(ResolvableType requiredType) {
         return null;
     }
 

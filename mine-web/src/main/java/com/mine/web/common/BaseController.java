@@ -13,7 +13,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.mine.common.enums.CommonEnum;
 
 /**
- * Created by jiangqingdong on 2019/1/24.
+ *
+ * @author jiangqingdong
+ * @date 2019/1/24
  */
 public abstract class BaseController {
 

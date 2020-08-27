@@ -6,6 +6,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * 全局跨域配置
  *
@@ -13,6 +15,7 @@ import org.springframework.web.filter.CorsFilter;
  * @date 2019/7/27
  */
 @Configuration
+@Slf4j
 public class GlobalCorsConfig {
 
     /**
@@ -20,6 +23,7 @@ public class GlobalCorsConfig {
      */
     @Bean
     public CorsFilter corsFilter() {
+        log.info("初始化跨域过滤器");
         CorsConfiguration config = new CorsConfiguration();
         //允许所有域名进行跨域调用
         config.addAllowedOrigin("*");

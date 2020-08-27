@@ -1,4 +1,4 @@
-package com.mine.web.config.properties;
+package com.mine.web.config.durid;
 
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;

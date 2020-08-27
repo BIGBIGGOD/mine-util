@@ -24,8 +24,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class GlobalExceptionHandler extends BaseController {
 
-//    public static final String DEFAULT_ERROR_VIEW = "error";
-
     @ExceptionHandler(value = Exception.class)
     public Result defaultErrorHandler(Exception e, HttpServletRequest request) {
         if (e instanceof BasesException) {
