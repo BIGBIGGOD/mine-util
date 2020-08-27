@@ -30,6 +30,16 @@ public class MyFilter implements Filter {
 
     }
 
+    //定义需要加载的bean
+    /*private static PlatformService platformService;
+
+    static{
+        //获取当前web上下文
+        WebApplicationContext ctx = ContextLoader.getCurrentWebApplicationContext();
+        //从上下文中获取bean
+        platformService = ctx.getBean(PlatformService.class);
+    }*/
+
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) {
 

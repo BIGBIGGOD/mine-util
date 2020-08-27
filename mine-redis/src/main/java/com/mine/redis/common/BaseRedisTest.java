@@ -1,9 +1,10 @@
 package com.mine.redis.common;
 
 import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import com.mine.redis.RedisApplication;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -11,9 +12,9 @@ import lombok.extern.slf4j.Slf4j;
  * @Description 测试基类
  * Created by jiangqd on 2019/1/12.
  */
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = {RedisApplication.class})
 @Slf4j
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:redis-context.xml"})
 public class BaseRedisTest {
 
 }
