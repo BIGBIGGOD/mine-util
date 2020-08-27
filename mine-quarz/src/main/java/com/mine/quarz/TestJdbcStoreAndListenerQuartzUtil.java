@@ -44,7 +44,8 @@ public class TestJdbcStoreAndListenerQuartzUtil {
             .build();
 
         //定义一个JobDetail
-        JobDetail job = newJob(OrdinaryJob.class) //指定干活的类MailJob
+        //指定干活的类MailJob
+        JobDetail job = newJob(OrdinaryJob.class)
             .withIdentity("OrdinaryJob", "OrdinaryJobGroup") //定义任务名称和分组
             .usingJobData("email", "admin@10086.com") //定义属性
             .build();

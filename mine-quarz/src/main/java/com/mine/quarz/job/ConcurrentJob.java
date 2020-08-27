@@ -3,7 +3,9 @@ package com.mine.quarz.job;
 import org.quartz.*;
 
 /**
- * Created by jiangqd on 2019/2/14.
+ *
+ * @author jiangqd
+ * @date 2019/2/14
  */
 @DisallowConcurrentExecution
 public class ConcurrentJob implements Job {

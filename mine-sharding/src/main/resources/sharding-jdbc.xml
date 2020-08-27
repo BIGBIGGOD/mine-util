@@ -46,21 +46,21 @@
     <rdb:strategy id="business_id" sharding-columns="business_id"
                   algorithm-class="com.mine.sharding.util.ShardingKeyAlgorithm"/>
 
-    <!--    <rdb:strategy id="user_id" sharding-columns="user_id"-->
-    <!--                  algorithm-class="ShardingKeyAlgorithm"/>-->
+    <rdb:strategy id="user_id" sharding-columns="user_id"
+                  algorithm-class="com.mine.sharding.util.ShardingKeyAlgorithm"/>
 
     <!-- 配置表以及对应的分表,其中logic-table指对应表名，actual-tables指所有分表，后缀${0..49}表示分表从0开始到49，table-strategy指引用的检索配置 -->
     <rdb:data-source id="shardingDataSource">
         <rdb:sharding-rule data-sources="testDataSource">
             <rdb:table-rules>
-                <rdb:table-rule logic-table="t_sharding_test" actual-tables="t_sharding_test_${0..49}"
+                <rdb:table-rule logic-table="t_sharding_test" actual-tables="t_sharding_test${1..5}"
                                 table-strategy="business_id">
                     <rdb:generate-key-column column-name="id"/>
                 </rdb:table-rule>
-                <!--                <rdb:table-rule logic-table="t_sharding_test" actual-tables="t_sharding_test${0..49}"-->
-                <!--                                table-strategy="user_id">-->
-                <!--                    <rdb:generate-key-column column-name="id"/>-->
-                <!--                </rdb:table-rule>-->
+<!--                <rdb:table-rule logic-table="t_sharding_test" actual-tables="t_sharding_test${1..5}"-->
+<!--                                table-strategy="user_id">-->
+<!--                    <rdb:generate-key-column column-name="id"/>-->
+<!--                </rdb:table-rule>-->
             </rdb:table-rules>
         </rdb:sharding-rule>
         <rdb:props>

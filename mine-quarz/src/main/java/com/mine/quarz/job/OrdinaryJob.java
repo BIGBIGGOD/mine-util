@@ -9,7 +9,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by jiangqd on 2019/2/14.
+ *
+ * @author jiangqd
+ * @date 2019/2/14
  */
 public class OrdinaryJob implements Job {
 
