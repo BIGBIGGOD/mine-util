@@ -21,7 +21,7 @@ import org.springframework.util.CollectionUtils;
 @Component
 public class RedisTemplateUtils {
     @Autowired
-    @Qualifier("redisTemplate")
+    @Qualifier("redisDefineTemplate")
     private RedisTemplate<String, String> redisTemplate;
     
     /**

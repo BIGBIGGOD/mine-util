@@ -21,8 +21,8 @@ public class RedisTest extends BaseRedisTest {
 
     @Test
     public void test() {
-        redisTemplateUtils.set("a", "b");
-        String str = redisTemplateUtils.get("a");
+        redisTemplateUtils.set("aaaa", "bbbb");
+        String str = redisTemplateUtils.get("aaaa");
         System.out.println(str);
     }
 

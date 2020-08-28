@@ -22,7 +22,7 @@ public class RedisLockServiceImpl implements RedisLockService {
     private static final int DEFAULT_SINGLE_EXPIRE_TIME = 5;
 
     @Autowired
-    @Qualifier("redisTemplate")
+    @Qualifier("redisDefineTemplate")
     private RedisTemplate<String, String> redisTemplateDistribution;
 
     @Override

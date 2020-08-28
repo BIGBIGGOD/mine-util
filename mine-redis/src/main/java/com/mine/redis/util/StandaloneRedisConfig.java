@@ -36,9 +36,9 @@ public class StandaloneRedisConfig {
         return new GenericObjectPoolConfig();
     }
 
-    @Bean(name = "standaloneConfigurationIag")
+    @Bean(name = "standaloneConfiguration")
     @ConfigurationProperties(prefix = "redis")
-    public RedisStandaloneConfiguration standaloneConfigurationIag() {
+    public RedisStandaloneConfiguration standaloneConfiguration() {
         return new RedisStandaloneConfiguration();
     }
 
@@ -51,10 +51,10 @@ public class StandaloneRedisConfig {
         builder.connectTimeout(Duration.ofMillis(Long.valueOf(timeout)));
         builder.poolConfig(redisPoolDistribution());
         JedisClientConfiguration poolConfig = builder.build();
-        return new JedisConnectionFactory(standaloneConfigurationIag(), poolConfig);
+        return new JedisConnectionFactory(standaloneConfiguration(), poolConfig);
     }
 
-    @Bean(name = "redisTemplate")
+    @Bean(name = "redisDefineTemplate")
     @Primary
     public RedisTemplate redisTemplateDistribution() {
         RedisTemplate<Object, Object> template = getRedisTemplate();
