@@ -13,7 +13,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  * @Date 2019年10月18日 13:24:47
  * @Copyright Copyright © 2019 深圳花儿绽放网络科技股份有限公司. All rights reserved.
  */
-@MapperScan("com.baomidou.mybatisplus.samples.quickstart.mapper")
+@MapperScan("com.mine.mybatis.mapper")
 @SpringBootApplication
 public class MybatisApplication extends SpringBootServletInitializer {
     public static void main(String[] args) {

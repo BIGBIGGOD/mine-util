@@ -1,9 +1,6 @@
 logging:
   config: classpath:logback.xml
-#mysql
-mybatis:
-  mapper-locations: classpath*:sqlmap/**/*.xml
-  config-location: classpath:mybatis-Config.xml
+
 spring:
   datasource:
     druid:
@@ -36,8 +33,13 @@ spring:
           enabled: true
           db-type: h2
           log-slow-sql: true
+
 server:
   #修改jsp文件不用重启
   jsp-servlet.init-parameters.development: true
   #指定端口号
   port: 8080
+
+#mybatis-plus:
+#  configuration: classpath:mybatis-Config.xml
+#  mapperLocations: classpath*:sqlmap/**/*.xml
