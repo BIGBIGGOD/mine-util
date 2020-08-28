@@ -26,6 +26,7 @@
         <module>mine-security</module>
         <module>mine-redis</module>
         <module>mine-rabbitMq</module>
+        <module>mine-mybatis-plus</module>
     </modules>
 
     <properties>

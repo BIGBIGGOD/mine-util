@@ -1,13 +1,10 @@
-package com.mine.redis;
+package com.mine.mybatis;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.web.context.ContextLoader;
-import org.springframework.web.context.WebApplicationContext;
 
 /**
  * @author jqd
@@ -16,11 +13,12 @@ import org.springframework.web.context.WebApplicationContext;
  * @Date 2019年10月18日 13:24:47
  * @Copyright Copyright © 2019 深圳花儿绽放网络科技股份有限公司. All rights reserved.
  */
+@MapperScan("com.baomidou.mybatisplus.samples.quickstart.mapper")
 @SpringBootApplication
-public class RedisApplication extends SpringBootServletInitializer {
+public class MybatisApplication extends SpringBootServletInitializer {
     public static void main(String[] args) {
-        SpringApplication.run(RedisApplication.class, args);
-        System.out.println("RedisApplication启动完成");
+        SpringApplication.run(MybatisApplication.class, args);
+        System.out.println("MybatisApplication启动完成");
     }
 
     /**
@@ -29,6 +27,6 @@ public class RedisApplication extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         // 注意这里的参数要指向原先用main方法执行的Application启动类
-        return builder.sources(RedisApplication.class);
+        return builder.sources(MybatisApplication.class);
     }
 }
