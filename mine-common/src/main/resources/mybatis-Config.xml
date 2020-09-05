@@ -11,13 +11,15 @@
 
 
     <plugins>
-        <!-- 分页插件 -->
-        <plugin interceptor="com.github.pagehelper.PageHelper">
-            <!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库-->
-            <property name="dialect" value="mysql"/>
-        </plugin>
-        <!-- SQL拦截插件 -->
-        <!--<plugin interceptor="com.weijuju.iag.common.mybatis.pagination.MySQLExcutorInterceptor" />-->
+        <!-- 自定义分页插件 -->
+        <plugin interceptor="com.mine.common.pagination.MySQLPaginationInterceptor" />
+
+        <!-- github分页插件 -->
+<!--        <plugin interceptor="com.github.pagehelper.PageHelper">-->
+<!--            &lt;!&ndash; 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库&ndash;&gt;-->
+<!--            <property name="dialect" value="mysql"/>-->
+<!--        </plugin>-->
+
     </plugins>
 
 </configuration>
