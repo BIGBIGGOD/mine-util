@@ -95,4 +95,27 @@ public class ArrayTest {
         System.out.println(Arrays.toString(arr));
     }
 
+    public static void testKuaiSu(int[] arr, int left, int right) {
+        int left_ = left;
+        int right_ = right;
+        if (left < right) {
+            int temp = arr[left];
+            while (left != right) {
+                while (left < right && arr[left] < arr[right]) {
+                    right--;
+                }
+                arr[left] = arr[right];
+                while (left < right && arr[left] < temp) {
+                    left++;
+                }
+                arr[right] = arr[left];
+                arr[left] = temp;
+            }
+            System.out.println(Arrays.toString(arr));
+            testKuaiSu(arr, left + 1, right_);
+            testKuaiSu(arr, left_, left);
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+
 }
