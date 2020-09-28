@@ -39,6 +39,7 @@ public class JwtTokenUtil {
      * 根据负责生成JWT的token
      */
     private String generateToken(Map<String, Object> claims) {
+        long nowMillis = System.currentTimeMillis();
         return Jwts.builder()
                 //配置数据
                 .setClaims(claims)
@@ -46,6 +47,8 @@ public class JwtTokenUtil {
                 .setExpiration(generateExpirationDate())
                 //配置算法和密钥,当密钥长度太短的时候会导致加密报空错误
                 .signWith(SignatureAlgorithm.HS512, securityParams.getSecret())
+                // iat: jwt的签发时间
+                .setIssuedAt(new Date(nowMillis))
                 .compact();
     }
 

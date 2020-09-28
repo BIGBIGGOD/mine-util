@@ -8,11 +8,13 @@ import java.util.Arrays;
 public class ArrayTest {
 
     public static void main(String[] args) {
-        int[] arr = new int[]{6, 5, 1, 715};
+//        int[] arr = new int[]{6, 5, 1, 715};
+        int[] arr = new int[]{10, 8, 7, 1,9};
 //        maoPao(arr);
 //        xuanZe(arr);
-        chaRu(arr);
+//        chaRu(arr);
 //        kuaiSu(arr,0,arr.length-1);
+        testKuaiSu(arr,0,arr.length-1);
     }
 
     /**

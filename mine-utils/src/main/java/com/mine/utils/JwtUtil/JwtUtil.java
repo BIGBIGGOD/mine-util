@@ -62,21 +62,22 @@ public class JwtUtil {
         Claims claims = null;
         try {
             claims = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token).getBody();
-//            String username1 = claims.getIssuer();
-//            String username2 = claims.getSubject();
-//            String username3 = claims.getAudience();
-//            Date username4 = claims.getExpiration();
-//            Date username5 = claims.getNotBefore();
-//            Date username6 = claims.getIssuedAt();
-//            String username7 = claims.getId();
-//            String str1 = claims.get("1").toString();
-//            String str2 = claims.get("2").toString();
-//            String str3 = claims.get("3").toString();
-//            String str5 = claims.get("exp").toString();
-//            //使用下面这种方式可以预防空指针异常，同事指定返回类型
-//            String str6 = claims.get("1", String.class);
-//            String str7 = claims.get("4", String.class);
-//            LinkedHashMap hashMap = claims.get("xxxx", LinkedHashMap.class);
+            String username1 = claims.getIssuer();
+            String username2 = claims.getSubject();
+            String username3 = claims.getAudience();
+            Date username4 = claims.getExpiration();
+            Date username5 = claims.getNotBefore();
+            Date username6 = claims.getIssuedAt();
+            String username7 = claims.getId();
+            String str1 = claims.get("1").toString();
+            String str2 = claims.get("2").toString();
+            String str3 = claims.get("3").toString();
+            String str5 = claims.get("exp").toString();
+            //使用下面这种方式可以预防空指针异常，同事指定返回类型
+            String str6 = claims.get("1", String.class);
+            String str7 = claims.get("4", String.class);
+            LinkedHashMap hashMap = claims.get("xxxx", LinkedHashMap.class);
+            String user = claims.getSubject();
         } catch (Exception e) {
             log.info("getDataFromToken is wrong");
             return null;
@@ -172,6 +173,8 @@ public class JwtUtil {
         claims.put("1", "a");
         claims.put("2", "a");
         claims.put("3", "a");
+        claims.put("sub", "aaaa");
+        claims.put("exp", System.currentTimeMillis());
         String token = generateToken(claims);
         getDataFromToken(token);
     }

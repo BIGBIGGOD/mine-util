@@ -1,11 +1,9 @@
 package com.mine.utils.algorithmutil.balancetree;
 
-import com.alibaba.fastjson.JSON;
-
 /**
  * @author jiangqingdong
  * @version v1.0
- * @Description
+ * @Description 平衡二叉树
  * @DATE 2020/9/9 0009 11:07
  * @Copyright Copyright © 2019 深圳花儿绽放网络科技股份有限公司. All rights reserved.
  */
@@ -21,7 +19,7 @@ public class AVLTree {
      * 右旋,称为左子节点的右节点
      *
      * @param node
-     * @return
+     * @return res
      */
     public AVLNode rightRotation(AVLNode node) {
         if (node != null) {
@@ -52,7 +50,7 @@ public class AVLTree {
      * 左旋，称为右子节点的左节点
      *
      * @param node
-     * @return
+     * @return res
      */
     public AVLNode leftRotation(AVLNode node) {
         if (node != null) {
@@ -91,6 +89,7 @@ public class AVLTree {
         avlTree.put(0);
         System.out.println(avlTree.root);
     }
+
     /**
      * 插入节点
      *
@@ -153,7 +152,7 @@ public class AVLTree {
      * 计算node节点的BF值
      *
      * @param node
-     * @return
+     * @return res
      */
     public int calcNodeBalanceValue(AVLNode node) {
         if (node != null) {

@@ -1,4 +1,4 @@
-package com.mine.utils.algorithmutil.btree;
+package com.mine.utils.algorithmutil.redblacktree;
 
 /**
  * @author jiangqingdong
