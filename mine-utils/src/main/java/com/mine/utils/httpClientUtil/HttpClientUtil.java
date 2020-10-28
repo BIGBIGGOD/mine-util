@@ -133,7 +133,7 @@ public class HttpClientUtil {
             }
 
         } catch (IOException e) {
-            log.info("IOException={}", e);
+            log.info("IOException=", e);
             httpResponseResult = new HttpResponseResult(CommonEnum.INTERFAC_EERROR.getCode(), CommonEnum.INTERFAC_EERROR.getMessage());
             return getResult(httpResponseResult, clazz);
         } finally {
@@ -145,7 +145,7 @@ public class HttpClientUtil {
                     response.close();
                 }
             } catch (Exception e) {
-                log.info("资源关闭异常，e={}", e);
+                log.info("资源关闭异常，e=", e);
             }
         }
         return getResult(httpResponseResult, clazz);
@@ -230,7 +230,7 @@ public class HttpClientUtil {
             }
 
         } catch (Exception e) {
-            log.error("getResult error,exception={}", e);
+            log.error("getResult error,exception：", e);
         }
         return t;
     }

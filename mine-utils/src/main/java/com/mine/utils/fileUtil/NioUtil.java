@@ -18,26 +18,7 @@ public class NioUtil {
 
     public static void main(String[] args) throws IOException {
 //        writeNio1();
-//        writeNio2();
-        //读取文件
-        BufferedReader reader = new BufferedReader(new FileReader(new File(FILE_LOCAL)));
-        String line = null;
-        StringBuilder stringBuilder = new StringBuilder();
-        //readLine按行读返回行结果，read按单字节读取
-        while ((line = reader.readLine()) != null) {
-            stringBuilder.append(line);
-        }
-        //只要建立的输出流就会把对应的输出路径指向的文件初始化，导致里面内容全部为空
-        reader.close();
-        System.out.println(stringBuilder);
-        //新建字节缓冲区并初始化缓冲字节数据
-        ByteBuffer buffer = ByteBuffer.allocate(48);
-        FileOutputStream fileInputStream = new FileOutputStream(new File(PRODUCT_FILE));
-        FileChannel channel = fileInputStream.getChannel();
-        int i = channel.read(buffer);
-//        channel.write(buffer);
-//        channel.close();
-//        fileInputStream.close();
+        writeNio2();
     }
 
     public static void writeNio1() throws IOException {
@@ -53,7 +34,7 @@ public class NioUtil {
         reader.close();
         System.out.println(stringBuilder);
         //新建指定大小的字节缓冲区
-        ByteBuffer buffer = ByteBuffer.allocate(48);
+        ByteBuffer buffer = ByteBuffer.allocate(489999999);
         //建立输出流并获取对应通道
         FileOutputStream fileInputStream = new FileOutputStream(new File(PRODUCT_FILE));
         FileChannel channel = fileInputStream.getChannel();
