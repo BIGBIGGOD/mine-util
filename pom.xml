@@ -27,6 +27,11 @@
         <module>mine-redis</module>
         <module>mine-rabbitMq</module>
         <module>mine-mybatis-plus</module>
+
+        <module>mine-quarz</module>
+        <module>mine-sharding</module>
+        <module>mine-shiro</module>
+        <module>mine-utils</module>
     </modules>
 
     <properties>
@@ -313,12 +318,34 @@
             </dependency>
             <!-- 当当的分库依赖包end -->
 
-            <!-- 文件上传 -->
+            <!-- 文件上传 start-->
             <dependency>
                 <groupId>commons-fileupload</groupId>
                 <artifactId>commons-fileupload</artifactId>
                 <version>1.4</version>
             </dependency>
+            <!--文件上传end -->
+
+            <!--quartz定时调度start -->
+            <dependency>
+                <groupId>org.quartz-scheduler</groupId>
+                <artifactId>quartz</artifactId>
+                <version>${quartz.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.quartz-scheduler</groupId>
+                <artifactId>quartz-jobs</artifactId>
+                <version>${quartz.version}</version>
+            </dependency>
+            <!--quartz定时调度end -->
+
+            <!-- shiro框架依赖 -->
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-all</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

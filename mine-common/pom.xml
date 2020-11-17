@@ -13,7 +13,7 @@
 
     <dependencies>
 
-        <!--web -->
+        <!--web start -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -37,6 +37,14 @@
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
         </dependency>
+        <!-- web end -->
+
+        <!-- 测试start -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+        <!-- 测试end -->
 
         <!-- mybatis start -->
         <!-- 整合mysql -->
@@ -66,13 +74,6 @@
             <artifactId>druid-spring-boot-starter</artifactId>
         </dependency>
         <!-- mybatis end -->
-
-        <!-- 测试start -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>
-        <!-- 测试end -->
 
         <!-- 常用工具类库start -->
         <!-- google的 guava番石榴 依赖包-->

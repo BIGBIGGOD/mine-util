@@ -6,7 +6,7 @@
         <!--单个配置别名-->
         <!--<typeAlias alias="User" type="com.demo.entity.User"/>-->
         <!--批量配置别名-->
-        <package name="com.mine"/>
+<!--        <package name="com.mine"/>-->
     </typeAliases>
 
 

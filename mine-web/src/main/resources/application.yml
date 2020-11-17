@@ -5,3 +5,9 @@ spring:
     view:
       prefix: /views/
       suffix: .jsp
+
+server:
+  #修改jsp文件不用重启
+  jsp-servlet.init-parameters.development: true
+  #指定端口号
+  port: 8080

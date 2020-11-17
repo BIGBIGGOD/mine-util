@@ -62,5 +62,14 @@
         <table tableName="t_user" domainObjectName="UserDo">
             <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
         </table>
+
+        <!--当主键id非空且非自增时插入，使用如下这种逆向生成方式-->
+        <table tableName="t_v2_cmb_openuser" domainObjectName="OpenUserDO"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+            <property name="modelOnly" value="false"/>
+        </table>
+
     </context>
 </generatorConfiguration>
