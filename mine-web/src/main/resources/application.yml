@@ -1,13 +1,59 @@
-spring:
-  profiles:
-    active: @profiles.active@
-  mvc:
-    view:
-      prefix: /views/
-      suffix: .jsp
-
 server:
   #修改jsp文件不用重启
   jsp-servlet.init-parameters.development: true
   #指定端口号
   port: 8080
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  profiles:
+    active: @profiles.active@
+    include: datasource
+    mvc:
+      view:
+        prefix: /views/
+        suffix: .jsp
+#  application:
+#    name: cmb-tag-outer-web
+#  datasource:
+#    name: druidDataSource
+#    # 使用druid数据源
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    driverClassName: com.mysql.jdbc.Driver
+#    filters: stat
+#    maxActive: 200
+#    initial-size: 20
+#    minIdle: 20
+#    maxWait: 60000
+#    timeBetweenEvictionRunsMillis: 60000
+#    minEvictableIdleTimeMillis: 300000
+#    validationQuery: select 'x'
+#    testWhileIdle: true
+#    testOnBorrow: true
+#    testOnReturn: false
+#    poolPreparedStatements: true
+#    maxOpenPreparedStatements: 20
+#    maxPoolPreparedStatementPerConnectionSize: 20
+#  jackson:
+#    date-format: yyyy-MM-dd HH:mm:ss
+#    time-zone: GMT+8
+#  servlet:
+#    multipart:
+#      enabled: true
+#      max-file-size: 2MB
+#      max-request-size: 2MB
+#  http:
+#    encoding:
+#      charset: UTF-8
+#      enabled: true
+#      force: true
+#mybatis:
+#  mapper-locations: classpath:mapping/*.xml
+#  type-aliases-package: com.huaer.entity
+#pagehelper:
+#  helperDialect: mysql
+#  reasonable: true
+#  supportMethodsArguments: true
+#  params: count=countSql
+
