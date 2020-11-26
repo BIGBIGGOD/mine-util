@@ -18,20 +18,19 @@ import org.springframework.core.io.Resource;
  */
 public class SpringBeanDefinitionTest {
 
-    /*public static void main(String[] args) {
-        BeanDefinitionRegistry registry = new SimpleBeanDefinitionRegistry();
-        BeanDefinitionReader reader = new XmlBeanDefinitionReader(registry);
-        DefaultResourceLoader loader = new DefaultResourceLoader();
-        Resource resource = loader.getResource("spring-test.xml");
-        reader.loadBeanDefinitions(resource);
-        System.out.println(Arrays.toString(registry.getBeanDefinitionNames()));
-    }*/
+//    public static void main(String[] args) {
+//        BeanDefinitionRegistry registry = new SimpleBeanDefinitionRegistry();
+//        BeanDefinitionReader reader = new XmlBeanDefinitionReader(registry);
+//        DefaultResourceLoader loader = new DefaultResourceLoader();
+//        Resource resource = loader.getResource("spring-test.xml");
+//        reader.loadBeanDefinitions(resource);
+//        System.out.println(Arrays.toString(registry.getBeanDefinitionNames()));
+//    }
 
     public static void main(String[] args) {
         BeanDefinitionRegistry registry = new SimpleBeanDefinitionRegistry();
         BeanDefinitionReader reader = new XmlBeanDefinitionReader(registry);
         reader.loadBeanDefinitions("spring-test.xml");
         System.out.println(Arrays.toString(registry.getBeanDefinitionNames()));
-//        System.exit(0);
     }
 }

@@ -1,10 +1,12 @@
-package com.mine.domain.factory;
+package com.mine.utils.springUtil;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.core.ResolvableType;
+
+import com.mine.common.entity.User;
 
 /**
  * @author jiangqingdong
@@ -27,7 +29,7 @@ public class UserBeanFactory implements BeanFactory {
 
     @Override
     public Object getBean(String s) throws BeansException {
-        return null;
+        return new User().setName(s);
     }
 
     @Override

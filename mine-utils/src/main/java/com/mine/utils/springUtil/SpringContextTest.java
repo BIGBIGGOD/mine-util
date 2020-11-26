@@ -19,6 +19,8 @@ public class SpringContextTest {
         User user2 = (User) context.getBean("user2");
         User user3 = (User) context.getBean("user3");
         User user4 = (User) context.getBean("user4");
+        UserBeanFactory beanFactory = (UserBeanFactory) context.getBean("userBeanFactory");
+        User user5 = (User)beanFactory.getBean("xx");
         System.out.println("");
     }
 }

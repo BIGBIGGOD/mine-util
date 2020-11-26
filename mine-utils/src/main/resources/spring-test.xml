@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-lazy-init="false">
+
+
+    <!-- 利用构造方法配置参数 -->
+
+    <!-- 配置无参构造函数 -->
+    <bean id="user1" class="com.mine.common.entity.User"/>
+
+    <!-- 两种配置参数方式配置含参构造函数 -->
+    <bean id="user2" class="com.mine.common.entity.User">
+        <constructor-arg name="name" type="java.lang.String" value="悟空"/>
+        <constructor-arg index="1" type="java.lang.String" value="密码"/>
+    </bean>
+
+    <!-- set方式配置bean -->
+    <bean id="user3" class="com.mine.common.entity.User">
+        <property name="name" value="悟净"/>
+        <property name="pwd" value="悟净"/>
+    </bean>
+
+    <!-- 静态工厂方法创建 -->
+    <bean id="user4" class="com.mine.common.entity.User" factory-method="buildUserBean">
+        <constructor-arg name="type" type="java.lang.String" value="悟空"/>
+    </bean>
+
+    <!-- FactoryBean创建 -->
+    <bean id="userBeanFactory" class="com.mine.utils.springUtil.UserBeanFactory">
+        <property name="name" value="悟能"/>
+    </bean>
+</beans>

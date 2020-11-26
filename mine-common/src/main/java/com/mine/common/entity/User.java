@@ -11,7 +11,9 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
- * Created by jiangqd on 2019/3/11.
+ *
+ * @author jiangqd
+ * @date 2019/3/11
  */
 @Data
 @NoArgsConstructor
